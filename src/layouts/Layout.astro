@@ -6,8 +6,8 @@ export interface Props {
 }
 
 const {
-  title = 'Negocio no Azul - Do caos ao controle em 7 dias | R$ 97',
-  description = 'Descubra em 7 dias para onde o dinheiro do seu negocio esta indo - e comece a LUCRAR com o que voce ja vende. Ebook + Planilha + Guia por R$ 97.',
+  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 97',
+  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Ebook + Planilha + Guia por R$ 97.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
@@ -76,7 +76,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       window.addEventListener('load', function () {
         setTimeout(function () {
           window.fbq('track', 'ViewContent', {
-            content_name: 'Negocio no Azul',
+            content_name: 'Negócio no Azul',
             content_category: 'Ebook + Planilha',
             content_ids: ['I105499750V'],
             content_type: 'product',
@@ -91,7 +91,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         document.querySelectorAll('[data-cta="checkout"]').forEach(function (btn) {
           btn.addEventListener('click', function () {
             window.fbq('track', 'InitiateCheckout', {
-              content_name: 'Negocio no Azul',
+              content_name: 'Negócio no Azul',
               content_ids: ['I105499750V'],
               content_type: 'product',
               value: 97.0,
@@ -115,8 +115,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: 'Negocio no Azul',
-      description: 'Ebook + Planilha + Guia para voce sair do caos financeiro do seu negocio em 7 dias usando o metodo A.Z.U.L.',
+      name: 'Negócio no Azul',
+      description: 'Ebook + Planilha + Guia para você sair do caos financeiro do seu negócio em 7 dias usando o método A.Z.U.L.',
       brand: { '@type': 'Brand', name: 'Anderson Cruz' },
       offers: {
         '@type': 'Offer',

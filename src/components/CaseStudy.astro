@@ -1,0 +1,75 @@
+---
+const rows = [
+  { label: 'Faturamento mensal', before: 'R$ 45.000', after: 'R$ 48.200', delta: '+7%' },
+  { label: 'Lucro mensal', before: 'R$ 5.500', after: 'R$ 8.444', delta: '+54%', highlight: true },
+  { label: 'Ralos (desperdicios)', before: 'R$ 4.200', after: 'R$ 1.258', delta: '-70%' },
+  { label: 'Separacao PF/PJ', before: 'Misturava', after: 'Separado', delta: 'OK' },
+];
+---
+
+<section class="bg-navy-900 text-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <div class="absolute top-0 right-0 h-96 w-96 rounded-full bg-teal-500 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-5xl px-5">
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-block text-xs font-bold text-gold-400 uppercase tracking-widest mb-3">
+        Caso real
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+        De R$ 5.500 para <span class="text-gold-400">R$ 8.444/mes</span><br class="hidden sm:block" />
+        em 90 dias
+      </h2>
+      <p class="text-base sm:text-lg text-navy-100 max-w-2xl mx-auto">
+        Sem vender 50% a mais. Sem contratar mais gente. Sem trabalhar 20 horas por dia. So aplicando o metodo A.Z.U.L.
+      </p>
+    </div>
+
+    <!-- Quote block -->
+    <div class="relative bg-gradient-to-br from-navy-800 to-navy-950 rounded-2xl p-6 sm:p-8 lg:p-10 mb-8 border border-teal-500/20">
+      <svg class="absolute top-4 left-4 h-10 w-10 text-teal-500/30" fill="currentColor" viewBox="0 0 24 24"><path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006C6.214 15.659 7.097 16 8 16c1.657 0 3-1.343 3-3s-1.343-3-3-3zm11 0c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.317.143-.686.238-1.028.467-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006C17.214 15.659 18.097 16 19 16c1.657 0 3-1.343 3-3s-1.343-3-3-3z"/></svg>
+      <blockquote class="pl-14 sm:pl-16">
+        <p class="font-display text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-snug mb-4">
+          "Anderson, eu vendo bem. Mas no fim do mes, nunca sobra nada."
+        </p>
+        <footer class="flex items-center gap-3">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gold-400 to-gold-500 text-navy-900 font-display font-extrabold text-lg">
+            M
+          </div>
+          <div>
+            <div class="font-bold text-white">Dona Marta</div>
+            <div class="text-sm text-navy-200">18 anos de padaria</div>
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+
+    <!-- Before / After table -->
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div class="grid grid-cols-4 bg-navy-50 border-b border-navy-100">
+        <div class="p-3 sm:p-4 font-display font-bold text-navy-900 text-sm sm:text-base col-span-1 sm:col-span-1">Metrica</div>
+        <div class="p-3 sm:p-4 font-display font-bold text-red-600 text-xs sm:text-base text-center">Antes</div>
+        <div class="p-3 sm:p-4 font-display font-bold text-teal-600 text-xs sm:text-base text-center">Depois</div>
+        <div class="p-3 sm:p-4 font-display font-bold text-navy-900 text-xs sm:text-base text-center">Delta</div>
+      </div>
+      {rows.map((row) => (
+        <div class={`grid grid-cols-4 border-b border-navy-100 last:border-b-0 ${row.highlight ? 'bg-gradient-to-r from-teal-50 to-gold-400/10' : ''}`}>
+          <div class="p-3 sm:p-4 text-navy-800 text-xs sm:text-base font-semibold">{row.label}</div>
+          <div class="p-3 sm:p-4 text-red-600 text-xs sm:text-base text-center line-through">{row.before}</div>
+          <div class={`p-3 sm:p-4 text-xs sm:text-base text-center font-bold ${row.highlight ? 'text-teal-700 text-base sm:text-xl' : 'text-navy-900'}`}>{row.after}</div>
+          <div class={`p-3 sm:p-4 text-xs sm:text-base text-center font-extrabold ${row.highlight ? 'text-gold-500 text-sm sm:text-lg' : 'text-teal-600'}`}>{row.delta}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Highlight -->
+    <div class="mt-8 text-center">
+      <div class="inline-block bg-gradient-to-br from-gold-400 to-gold-500 text-navy-900 rounded-2xl p-5 sm:p-6 shadow-2xl">
+        <div class="text-xs sm:text-sm font-bold uppercase tracking-widest mb-1">Saldo anual extra</div>
+        <div class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold">+ R$ 35.328/ano</div>
+        <div class="text-xs sm:text-sm mt-2 font-semibold">sem vender 50% a mais</div>
+      </div>
+    </div>
+  </div>
+</section>

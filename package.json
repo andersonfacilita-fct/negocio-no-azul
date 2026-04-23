@@ -1,0 +1,20 @@
+{
+  "name": "negocio-no-azul",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de vendas - Negocio no Azul",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^7.8.2",
+    "astro": "^4.16.10",
+    "tailwindcss": "^3.4.14"
+  }
+}

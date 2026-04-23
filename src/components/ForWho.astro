@@ -1,0 +1,41 @@
+---
+const items = [
+  'Voce tem um pequeno negocio ou e autonomo/MEI',
+  'Fatura R$ 3.000 a R$ 100.000 por mes',
+  'Quer sair do feeling e tomar decisao com numero',
+  'Tem 5 minutos por dia pra lancar entradas e saidas',
+  'Quer entender SEU negocio, nao teoria de faculdade',
+];
+---
+
+<section class="bg-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-4xl px-5">
+    <div class="text-center mb-10 sm:mb-12">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        Pra quem e
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight">
+        Feito pra voce <span class="text-teal-600">se...</span>
+      </h2>
+    </div>
+
+    <div class="bg-gradient-to-br from-navy-50 to-white rounded-2xl shadow-lg border border-navy-100 p-6 sm:p-10">
+      <ul class="space-y-4 sm:space-y-5">
+        {items.map((item) => (
+          <li class="flex items-start gap-4">
+            <div class="flex-shrink-0 mt-0.5">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-teal-500 text-white shadow-md">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </div>
+            </div>
+            <p class="text-base sm:text-lg text-navy-800 leading-relaxed pt-0.5 font-medium">{item}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <p class="text-center text-sm sm:text-base text-navy-600 mt-6 italic">
+      Se voce se reconheceu em <strong class="text-navy-900 not-italic">3 ou mais</strong>, esse material vai destravar seu negocio.
+    </p>
+  </div>
+</section>

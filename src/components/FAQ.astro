@@ -1,0 +1,65 @@
+---
+const faqs = [
+  {
+    q: 'Funciona pra qualquer tipo de negocio?',
+    a: 'Sim. O metodo A.Z.U.L. foi testado em padaria, loja de roupas, salao de beleza, oficina, prestador de servico, delivery, loja online e MEI em geral. Se voce tem entrada e saida de dinheiro, funciona. A linguagem e totalmente pratica, nao importa o ramo.',
+  },
+  {
+    q: 'Preciso saber Excel?',
+    a: 'Nao. A planilha ja vem 100% pronta - voce so digita entrada e saida, o resto e automatico. E voce recebe um guia de 14 paginas explicando aba por aba, com exemplos preenchidos. Se ja abriu um aplicativo no celular, consegue usar.',
+  },
+  {
+    q: 'Funciona no celular?',
+    a: 'Funciona. O ebook e o guia sao PDFs que voce le no celular tranquilamente. A planilha abre no Google Sheets (gratuito, direto do celular) ou no Excel. A maioria dos alunos usa direto pelo celular.',
+  },
+  {
+    q: 'Quanto tempo leva pra ver resultado?',
+    a: 'Em 7 dias voce ja tem seus 3 numeros na mao (Ponto de Equilibrio, Pro-labore ideal e Maior Ralo). O impacto financeiro real costuma aparecer entre o 30 e o 90 dia, conforme voce corta desperdicios e separa as contas. Dona Marta conseguiu em 90 dias.',
+  },
+  {
+    q: 'Tem suporte?',
+    a: 'Sim. Voce tem suporte via WhatsApp pra tirar duvida sobre o material, a planilha ou o metodo. Voce nao vai ficar sozinho.',
+  },
+  {
+    q: 'Como recebo o material?',
+    a: 'Direto no seu e-mail, logo apos a confirmacao do pagamento (em geral, menos de 2 minutos). Voce recebe um link de acesso a area de membros com o ebook, a planilha e o guia pra baixar quando quiser.',
+  },
+  {
+    q: 'E se eu nao gostar?',
+    a: 'Voce tem 7 dias de garantia total. Basta pedir reembolso nesse periodo e devolvemos 100% do valor pago, sem pergunta, sem burocracia. O risco e todo nosso.',
+  },
+  {
+    q: 'Tem mensalidade?',
+    a: 'Nao. E pagamento unico. Voce paga R$ 97 uma vez so (a vista ou parcelado em ate 12x) e o material fica seu pra sempre.',
+  },
+];
+---
+
+<section class="bg-navy-50 py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-3xl px-5">
+    <div class="text-center mb-10 sm:mb-12">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        Duvidas frequentes
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight">
+        Ainda tem <span class="text-teal-600">duvida</span>?
+      </h2>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq, i) => (
+        <details class="group bg-white rounded-xl shadow-sm border border-navy-100 overflow-hidden transition-shadow hover:shadow-md" open={i === 0}>
+          <summary class="flex items-start justify-between gap-4 p-5 sm:p-6 cursor-pointer select-none list-none">
+            <h3 class="font-display font-bold text-navy-900 text-base sm:text-lg leading-snug pr-2">{faq.q}</h3>
+            <span class="flex-shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-teal-500 text-white transition-transform group-open:rotate-45">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
+            </span>
+          </summary>
+          <div class="px-5 sm:px-6 pb-5 sm:pb-6 text-navy-700 leading-relaxed text-sm sm:text-base">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

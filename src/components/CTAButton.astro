@@ -1,0 +1,56 @@
+---
+export interface Props {
+  label?: string;
+  size?: 'md' | 'lg' | 'xl';
+  variant?: 'primary' | 'secondary';
+  fullWidth?: boolean;
+  showArrow?: boolean;
+  className?: string;
+}
+
+const {
+  label = 'QUERO COLOCAR MEU NEGOCIO NO AZUL - R$ 97',
+  size = 'lg',
+  variant = 'primary',
+  fullWidth = false,
+  showArrow = true,
+  className = '',
+} = Astro.props;
+
+const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2';
+
+const sizeClasses = {
+  md: 'px-6 py-3 text-sm sm:text-base',
+  lg: 'px-6 py-4 sm:px-8 sm:py-5 text-base sm:text-lg',
+  xl: 'px-6 py-5 sm:px-10 sm:py-6 text-lg sm:text-xl',
+};
+
+const variantClasses = {
+  primary:
+    'bg-gradient-to-br from-teal-400 to-teal-600 hover:from-teal-300 hover:to-teal-500 text-white btn-glow',
+  secondary:
+    'bg-gold-400 hover:bg-gold-300 text-navy-900 btn-glow',
+};
+---
+
+<a
+  href={CHECKOUT_URL}
+  data-cta="checkout"
+  target="_blank"
+  rel="noopener"
+  class={`inline-flex items-center justify-center gap-2 rounded-2xl font-bold font-display uppercase tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${sizeClasses[size]} ${variantClasses[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
+>
+  <span class="text-center leading-tight">{label}</span>
+  {showArrow && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2.5"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  )}
+</a>

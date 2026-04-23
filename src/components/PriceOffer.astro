@@ -1,0 +1,109 @@
+---
+import CTAButton from './CTAButton.astro';
+---
+
+<section id="oferta" class="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-96 w-[600px] rounded-full bg-teal-500 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-3xl px-5">
+    <div class="text-center mb-10">
+      <div class="inline-block text-xs font-bold text-gold-400 uppercase tracking-widest mb-3">
+        Oferta de lancamento
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+        Hora de colocar seu negocio <span class="text-gold-400">no azul</span>
+      </h2>
+      <p class="text-base sm:text-lg text-navy-100">
+        Acesso imediato. Garantia de 7 dias. Sem mensalidade. Sem letra miuda.
+      </p>
+    </div>
+
+    <!-- Price card -->
+    <div class="relative bg-white text-navy-900 rounded-3xl p-8 sm:p-10 shadow-2xl border-4 border-gold-400">
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold-400 text-navy-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider px-4 py-2 rounded-full shadow-xl">
+        Pacote completo
+      </div>
+
+      <!-- What's in -->
+      <div class="grid grid-cols-3 gap-3 sm:gap-5 mb-8 pt-2">
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl mb-1">📘</div>
+          <div class="text-xs sm:text-sm font-bold text-navy-900">Ebook</div>
+          <div class="text-xs text-navy-500">22 pgs</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl mb-1">📊</div>
+          <div class="text-xs sm:text-sm font-bold text-navy-900">Planilha</div>
+          <div class="text-xs text-navy-500">8 abas</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl sm:text-4xl mb-1">📋</div>
+          <div class="text-xs sm:text-sm font-bold text-navy-900">Guia</div>
+          <div class="text-xs text-navy-500">14 pgs</div>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="text-center mb-8 py-5 border-y border-navy-100">
+        <div class="text-sm text-navy-500 mb-1">
+          De <span class="line-through">R$ 297</span> por
+        </div>
+        <div class="flex items-baseline justify-center gap-1">
+          <span class="text-2xl sm:text-3xl font-bold text-teal-600">R$</span>
+          <span class="font-display text-6xl sm:text-7xl lg:text-8xl font-extrabold text-teal-600 leading-none">97</span>
+        </div>
+        <div class="text-sm sm:text-base text-navy-700 mt-3 font-semibold">
+          a vista <span class="text-navy-500">ou</span> <strong class="text-navy-900">12x de R$ 9,90</strong> no cartao
+        </div>
+      </div>
+
+      <!-- Benefits list -->
+      <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-sm sm:text-base">
+          <svg class="h-6 w-6 text-teal-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span class="text-navy-800"><strong>Acesso imediato</strong> apos a compra</span>
+        </li>
+        <li class="flex items-center gap-3 text-sm sm:text-base">
+          <svg class="h-6 w-6 text-teal-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span class="text-navy-800"><strong>Garantia de 7 dias</strong> - nao gostou, devolvemos 100%</span>
+        </li>
+        <li class="flex items-center gap-3 text-sm sm:text-base">
+          <svg class="h-6 w-6 text-teal-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span class="text-navy-800"><strong>Suporte via WhatsApp</strong> em caso de duvida</span>
+        </li>
+        <li class="flex items-center gap-3 text-sm sm:text-base">
+          <svg class="h-6 w-6 text-teal-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <span class="text-navy-800"><strong>Pagamento unico</strong>, sem mensalidade, sem renovacao</span>
+        </li>
+      </ul>
+
+      <CTAButton size="xl" fullWidth={true} />
+
+      <!-- Payment methods -->
+      <div class="mt-6 text-center">
+        <div class="text-xs text-navy-500 mb-2 uppercase tracking-widest font-bold">Formas de pagamento</div>
+        <div class="flex items-center justify-center gap-2 flex-wrap">
+          <span class="inline-flex items-center gap-1 text-xs font-bold bg-navy-50 text-navy-800 rounded-lg px-3 py-1.5 border border-navy-100">Pix</span>
+          <span class="inline-flex items-center gap-1 text-xs font-bold bg-navy-50 text-navy-800 rounded-lg px-3 py-1.5 border border-navy-100">Cartao</span>
+          <span class="inline-flex items-center gap-1 text-xs font-bold bg-navy-50 text-navy-800 rounded-lg px-3 py-1.5 border border-navy-100">Boleto</span>
+          <span class="inline-flex items-center gap-1 text-xs font-bold bg-teal-50 text-teal-700 rounded-lg px-3 py-1.5 border border-teal-100">🔒 Checkout Hotmart</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guarantee badge -->
+    <div class="mt-10 bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-5 sm:p-6 flex items-center gap-4 sm:gap-6">
+      <div class="flex-shrink-0 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gold-400 text-navy-900 font-display font-extrabold text-xl sm:text-2xl shadow-xl">
+        7d
+      </div>
+      <div>
+        <h3 class="font-display text-lg sm:text-xl font-extrabold mb-1">Garantia incondicional de 7 dias</h3>
+        <p class="text-sm sm:text-base text-navy-100 leading-relaxed">
+          Testa por 7 dias. Se achar que nao e pra voce, pede reembolso: devolvemos <strong class="text-gold-400">100% do valor</strong>, sem perguntas. Voce so tem a ganhar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

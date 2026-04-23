@@ -1,0 +1,127 @@
+---
+import CTAButton from './CTAButton.astro';
+
+const items = [
+  {
+    icon: '📘',
+    badge: 'Ebook',
+    title: 'Negocio no Azul',
+    subtitle: '22 paginas',
+    description: 'Metodo A.Z.U.L. completo, com plano de 7 dias passo a passo. Linguagem direta, exemplos reais. Le no celular, no onibus, no almoco.',
+    features: [
+      '5 erros que matam o seu dinheiro',
+      'Plano de 7 dias com acoes concretas',
+      'Caso real: Dona Marta (18 anos de padaria)',
+      'Os 3 numeros que voce precisa saber',
+    ],
+  },
+  {
+    icon: '📊',
+    badge: 'Planilha',
+    title: 'Planilha Financeira',
+    subtitle: '8 abas com calculos automaticos',
+    description: 'Voce so preenche entrada e saida. A planilha faz o resto: DRE, diagnostico, ponto de equilibrio e alertas inteligentes avisando onde o dinheiro esta vazando.',
+    features: [
+      'Fluxo de caixa diario automatizado',
+      'DRE mensal - quanto voce lucra de verdade',
+      'Diagnostico: status do seu negocio',
+      'Alertas inteligentes nos numeros criticos',
+    ],
+    highlight: true,
+  },
+  {
+    icon: '📋',
+    badge: 'Guia',
+    title: 'Guia de Uso da Planilha',
+    subtitle: '14 paginas',
+    description: 'Aba por aba, com exemplos, dicas e atalhos. Voce nao precisa saber Excel. Tem alguem te pegando pela mao.',
+    features: [
+      'Passo a passo de cada aba',
+      'Exemplos preenchidos de negocios reais',
+      'Dicas para bater a meta em 30 dias',
+      'O que fazer se algo der errado',
+    ],
+  },
+];
+---
+
+<section class="bg-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        Pacote completo
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight mb-4">
+        O que voce <span class="text-gradient-teal">recebe</span>
+      </h2>
+      <p class="text-base sm:text-lg text-navy-700 max-w-2xl mx-auto">
+        3 materiais que se complementam para tirar seu negocio do vermelho sem voce ter que virar economista.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {items.map((item) => (
+        <div class={`relative rounded-2xl p-6 sm:p-7 shadow-lg hover:shadow-2xl transition-all duration-300 ${item.highlight ? 'bg-gradient-to-br from-teal-500 to-teal-700 text-white ring-4 ring-gold-400/40 md:-translate-y-4' : 'bg-navy-50 border border-navy-100 text-navy-900'}`}>
+          {item.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-400 text-navy-900 text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              Carro-chefe
+            </div>
+          )}
+
+          <div class="text-5xl mb-3">{item.icon}</div>
+
+          <div class={`text-xs font-bold uppercase tracking-widest mb-1 ${item.highlight ? 'text-gold-300' : 'text-teal-600'}`}>
+            {item.badge} - {item.subtitle}
+          </div>
+
+          <h3 class={`font-display text-xl sm:text-2xl font-extrabold mb-3 ${item.highlight ? 'text-white' : 'text-navy-900'}`}>
+            {item.title}
+          </h3>
+
+          <p class={`text-sm sm:text-base leading-relaxed mb-5 ${item.highlight ? 'text-teal-50' : 'text-navy-700'}`}>
+            {item.description}
+          </p>
+
+          <ul class="space-y-2">
+            {item.features.map((feature) => (
+              <li class="flex items-start gap-2 text-sm">
+                <svg class={`h-5 w-5 flex-shrink-0 mt-0.5 ${item.highlight ? 'text-gold-300' : 'text-teal-600'}`} fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <span class={item.highlight ? 'text-white' : 'text-navy-800'}>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Value stack -->
+    <div class="mt-12 sm:mt-16 max-w-2xl mx-auto bg-navy-50 rounded-2xl p-6 sm:p-8 border border-navy-100">
+      <h3 class="font-display text-lg sm:text-xl font-bold text-navy-900 mb-5 text-center">Valor real do pacote</h3>
+      <div class="space-y-3 mb-5">
+        <div class="flex items-baseline justify-between text-sm sm:text-base">
+          <span class="text-navy-700">Ebook "Negocio no Azul" (22 pgs)</span>
+          <span class="font-bold text-navy-900">R$ 97</span>
+        </div>
+        <div class="flex items-baseline justify-between text-sm sm:text-base">
+          <span class="text-navy-700">Planilha Financeira (8 abas)</span>
+          <span class="font-bold text-navy-900">R$ 147</span>
+        </div>
+        <div class="flex items-baseline justify-between text-sm sm:text-base">
+          <span class="text-navy-700">Guia de Uso (14 pgs)</span>
+          <span class="font-bold text-navy-900">R$ 53</span>
+        </div>
+        <div class="border-t border-navy-200 pt-3 flex items-baseline justify-between">
+          <span class="font-display font-bold text-navy-900">Total</span>
+          <span class="font-display font-bold text-navy-900 line-through">R$ 297</span>
+        </div>
+        <div class="flex items-baseline justify-between bg-teal-50 rounded-lg p-3 -mx-2">
+          <span class="font-display font-extrabold text-teal-700 text-lg">Voce paga hoje</span>
+          <span class="font-display font-extrabold text-teal-700 text-2xl sm:text-3xl">R$ 97</span>
+        </div>
+      </div>
+      <div class="text-center">
+        <CTAButton size="lg" fullWidth={true} />
+      </div>
+    </div>
+  </div>
+</section>

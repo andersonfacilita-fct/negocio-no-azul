@@ -1,0 +1,81 @@
+---
+const steps = [
+  {
+    letter: 'A',
+    title: 'Anotar',
+    subtitle: 'toda entrada e saida, todos os dias',
+    description: 'O que voce nao mede, voce nao controla. 5 minutos por dia - como escovar os dentes do seu negocio.',
+    color: 'from-teal-500 to-teal-700',
+  },
+  {
+    letter: 'Z',
+    title: 'Zerar ralos',
+    subtitle: 'identificar desperdicios invisiveis',
+    description: 'Descubra aqueles R$ 300, R$ 500, R$ 1.200 que somem todo mes sem voce perceber - e trave na raiz.',
+    color: 'from-teal-500 to-teal-700',
+  },
+  {
+    letter: 'U',
+    title: 'Unificar (separando)',
+    subtitle: 'dinheiro PF e PJ separados, pro-labore fixo',
+    description: 'Fim da bagunca: uma conta pra vida pessoal, outra pro negocio, e um salario fixo pra voce.',
+    color: 'from-teal-500 to-teal-700',
+  },
+  {
+    letter: 'L',
+    title: 'Lucrar com consciencia',
+    subtitle: 'lucro com destino: reserva, crescer, voce',
+    description: 'Lucro nao e sobra. E dinheiro com nome e direcao. Voce decide pra onde ele vai.',
+    color: 'from-teal-500 to-teal-700',
+  },
+];
+---
+
+<section class="bg-gradient-to-b from-navy-50 to-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        A solucao
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight mb-4">
+        O metodo que ja organizou <br class="hidden sm:block" />
+        <span class="text-gradient-teal">centenas de pequenos negocios</span>
+      </h2>
+      <p class="text-base sm:text-lg text-navy-700 max-w-2xl mx-auto">
+        4 passos simples. Linguagem de feira, nao de faculdade. Voce aplica no seu dia a dia, no seu celular.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+      {steps.map((step, i) => (
+        <div class="group relative bg-white rounded-2xl p-6 sm:p-7 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-navy-100 overflow-hidden">
+          <div class={`absolute -top-10 -right-10 w-32 h-32 rounded-full bg-gradient-to-br ${step.color} opacity-10 group-hover:opacity-20 transition-opacity`}></div>
+
+          <div class="relative">
+            <div class={`inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl bg-gradient-to-br ${step.color} text-white font-display text-3xl sm:text-4xl font-extrabold mb-4 shadow-md`}>
+              {step.letter}
+            </div>
+
+            <h3 class="font-display text-xl sm:text-2xl font-extrabold text-navy-900 mb-1">
+              {step.title}
+            </h3>
+            <p class="text-sm font-semibold text-teal-600 uppercase tracking-wide mb-3">
+              {step.subtitle}
+            </p>
+            <p class="text-sm sm:text-base text-navy-700 leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Extra emphasis line -->
+    <div class="mt-10 sm:mt-12 text-center">
+      <p class="inline-flex items-center gap-2 bg-gold-400/20 border border-gold-400/40 text-navy-900 font-bold font-display text-sm sm:text-base px-5 py-3 rounded-full">
+        <svg class="h-5 w-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+        Em 7 dias voce sabe seus 3 numeros: Ponto de Equilibrio, Pro-labore ideal e Maior Ralo.
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2';
+---
+
+<div
+  id="sticky-cta"
+  class="fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-navy-100 shadow-2xl p-3 sm:hidden translate-y-full transition-transform duration-300"
+>
+  <div class="flex items-center gap-3">
+    <div class="flex-shrink-0">
+      <div class="text-[10px] uppercase tracking-wider text-navy-500 font-bold">De <span class="line-through">R$ 297</span></div>
+      <div class="font-display text-xl font-extrabold text-teal-600 leading-none">R$ 97</div>
+    </div>
+    <a
+      href={CHECKOUT_URL}
+      data-cta="checkout"
+      target="_blank"
+      rel="noopener"
+      class="flex-1 inline-flex items-center justify-center gap-1 bg-gradient-to-br from-teal-500 to-teal-700 text-white font-bold font-display text-xs uppercase tracking-wide px-3 py-3 rounded-xl btn-glow active:translate-y-0.5"
+    >
+      Comprar agora
+      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var el = document.getElementById('sticky-cta');
+    if (!el) return;
+    var shown = false;
+    function onScroll() {
+      var y = window.scrollY || window.pageYOffset;
+      if (!shown && y > 600) {
+        el.classList.remove('translate-y-full');
+        shown = true;
+      } else if (shown && y <= 600) {
+        el.classList.add('translate-y-full');
+        shown = false;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>

@@ -1,0 +1,117 @@
+---
+import CTAButton from './CTAButton.astro';
+---
+
+<section class="relative overflow-hidden gradient-navy text-white">
+  <!-- Decorative bg -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-teal-500 blur-3xl"></div>
+    <div class="absolute top-1/2 -left-24 h-96 w-96 rounded-full bg-gold-400/60 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-5 py-12 sm:py-16 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- Left: text -->
+      <div class="text-center lg:text-left animate-fade-up">
+        <div class="inline-flex items-center gap-2 rounded-full bg-teal-500/15 border border-teal-400/30 px-4 py-1.5 text-xs sm:text-sm font-semibold text-teal-300 mb-5">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75 animate-ping"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-teal-400"></span>
+          </span>
+          METODO A.Z.U.L. - RESULTADOS EM 7 DIAS
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] mb-5">
+          Seu negocio vende, mas o dinheiro <span class="text-gold-400">nunca sobra</span>?
+        </h1>
+
+        <p class="text-base sm:text-lg lg:text-xl text-navy-100 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+          Descubra em <strong class="text-teal-300">7 dias</strong> para onde o dinheiro esta indo - e comece a <strong class="text-teal-300">LUCRAR</strong> com o que voce ja vende. Sem teoria. Sem planilha impossivel.
+        </p>
+
+        <div class="flex flex-col sm:items-start items-stretch gap-4">
+          <CTAButton size="xl" />
+          <p class="text-sm text-navy-200 text-center sm:text-left">
+            <span class="line-through text-navy-300">De R$ 297</span> por apenas <strong class="text-gold-400">R$ 97</strong> a vista (ou 12x de R$ 9,90)
+          </p>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-8 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-3 text-sm text-navy-100">
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            7 dias de garantia
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Acesso imediato
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="h-5 w-5 text-teal-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            Suporte via WhatsApp
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: product mockup -->
+      <div class="relative animate-fade-up">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <!-- Glow -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/30 to-gold-400/30 blur-3xl rounded-full"></div>
+
+          <!-- Product stack mockup -->
+          <div class="relative">
+            <!-- Ebook "cover" -->
+            <div class="relative mx-auto w-64 sm:w-80 lg:w-96 aspect-[3/4] rounded-2xl bg-gradient-to-br from-navy-700 via-navy-800 to-navy-950 shadow-2xl border border-teal-500/20 rotate-[-6deg] hover:rotate-0 transition-transform duration-500 overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/10 via-transparent to-gold-400/10"></div>
+              <div class="relative h-full p-7 sm:p-9 flex flex-col justify-between">
+                <div>
+                  <div class="text-xs font-bold text-teal-300 uppercase tracking-widest mb-2">Ebook + Planilha + Guia</div>
+                  <div class="h-0.5 w-12 bg-gold-400 mb-6"></div>
+                  <h3 class="font-display text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                    Negocio<br /><span class="text-gradient-teal">no Azul</span>
+                  </h3>
+                  <p class="text-xs sm:text-sm text-navy-200 mt-4 leading-relaxed">
+                    Do caos ao controle em 7 dias com o metodo A.Z.U.L.
+                  </p>
+                </div>
+                <div>
+                  <div class="text-xs text-navy-200 mb-1">Por</div>
+                  <div class="text-sm font-bold text-white">Anderson Cruz</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spreadsheet "card" -->
+            <div class="absolute -bottom-6 -right-2 sm:-right-6 w-44 sm:w-56 aspect-[4/5] rounded-xl bg-white shadow-2xl rotate-[8deg] hover:rotate-0 transition-transform duration-500 overflow-hidden border-2 border-teal-500">
+              <div class="h-8 bg-teal-600 flex items-center px-3 gap-1.5">
+                <div class="h-2 w-2 rounded-full bg-white/70"></div>
+                <div class="h-2 w-2 rounded-full bg-white/50"></div>
+                <div class="h-2 w-2 rounded-full bg-white/30"></div>
+                <div class="ml-auto text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-wide">Planilha</div>
+              </div>
+              <div class="p-2 sm:p-3 space-y-1">
+                {[...Array(6)].map((_, i) => (
+                  <div class="grid grid-cols-3 gap-1">
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : 'bg-navy-100'}`}></div>
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : 'bg-teal-200'}`}></div>
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : i === 2 ? 'bg-gold-300' : 'bg-teal-400'}`}></div>
+                  </div>
+                ))}
+                <div class="mt-2 pt-2 border-t border-navy-100">
+                  <div class="text-[9px] sm:text-[10px] font-bold text-teal-700 uppercase">Lucro</div>
+                  <div class="text-sm sm:text-base font-extrabold text-teal-600">+54%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Float badge -->
+        <div class="hidden sm:block absolute -top-4 -left-4 lg:-left-12 rotate-[-8deg] bg-gold-400 text-navy-900 font-display font-extrabold text-sm px-4 py-2 rounded-full shadow-xl">
+          +R$ 35.328/ano<br /><span class="text-xs font-semibold">caso real</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

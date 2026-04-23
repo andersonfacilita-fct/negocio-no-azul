@@ -1,0 +1,166 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Negocio no Azul - Do caos ao controle em 7 dias | R$ 97',
+  description = 'Descubra em 7 dias para onde o dinheiro do seu negocio esta indo - e comece a LUCRAR com o que voce ja vende. Ebook + Planilha + Guia por R$ 97.',
+  ogImage = '/og-image.jpg',
+} = Astro.props;
+
+const PIXEL_ID = '1183885533721874';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a1628" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <!-- Fonts (preconnect + single stylesheet load) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Meta Pixel -->
+    <script is:inline define:vars={{ PIXEL_ID }}>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+      window.fbq('init', PIXEL_ID);
+      window.fbq('track', 'PageView');
+
+      // ViewContent after 10 seconds on page
+      window.addEventListener('load', function () {
+        setTimeout(function () {
+          window.fbq('track', 'ViewContent', {
+            content_name: 'Negocio no Azul',
+            content_category: 'Ebook + Planilha',
+            content_ids: ['I105499750V'],
+            content_type: 'product',
+            value: 97.0,
+            currency: 'BRL',
+          });
+        }, 10000);
+      });
+
+      // InitiateCheckout on any buy button click
+      window.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-cta="checkout"]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            window.fbq('track', 'InitiateCheckout', {
+              content_name: 'Negocio no Azul',
+              content_ids: ['I105499750V'],
+              content_type: 'product',
+              value: 97.0,
+              currency: 'BRL',
+              num_items: 1,
+            });
+          });
+        });
+      });
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
+      />
+    </noscript>
+
+    <!-- Structured Data - Product -->
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: 'Negocio no Azul',
+      description: 'Ebook + Planilha + Guia para voce sair do caos financeiro do seu negocio em 7 dias usando o metodo A.Z.U.L.',
+      brand: { '@type': 'Brand', name: 'Anderson Cruz' },
+      offers: {
+        '@type': 'Offer',
+        price: '97.00',
+        priceCurrency: 'BRL',
+        availability: 'https://schema.org/InStock',
+        url: 'https://pay.hotmart.com/I105499750V?checkoutMode=2',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '127',
+      },
+    })} />
+  </head>
+  <body class="bg-white text-navy-900 font-sans antialiased selection:bg-teal-200 selection:text-navy-900">
+    <slot />
+
+    <style is:global>
+      html {
+        -webkit-tap-highlight-color: transparent;
+      }
+      body {
+        font-feature-settings: 'cv11', 'ss01';
+      }
+      .font-display {
+        font-family: 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+        letter-spacing: -0.02em;
+      }
+      .gradient-navy {
+        background: linear-gradient(135deg, #0a1628 0%, #162d4a 50%, #0a1628 100%);
+      }
+      .text-gradient-teal {
+        background: linear-gradient(90deg, #14b8a6 0%, #5eecc9 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .btn-glow {
+        box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.35), 0 6px 10px -4px rgba(250, 204, 21, 0.15);
+      }
+      .btn-glow:hover {
+        box-shadow: 0 20px 35px -5px rgba(20, 184, 166, 0.5), 0 10px 15px -4px rgba(250, 204, 21, 0.25);
+      }
+    </style>
+  </body>
+</html>

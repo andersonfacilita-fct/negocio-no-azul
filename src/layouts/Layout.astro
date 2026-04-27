@@ -131,6 +131,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         reviewCount: '127',
       },
     })} />
+
+    <!-- UTMify - Tracking de UTMs e atribuição de vendas -->
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
   </head>
   <body class="bg-white text-navy-900 font-sans antialiased selection:bg-teal-200 selection:text-navy-900">
     <slot />

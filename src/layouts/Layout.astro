@@ -139,6 +139,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       async
       defer
     ></script>
+
+    <!-- UTMify Pixel — eventos Initiate Checkout/Purchase server-side -->
+    <script is:inline>
+      window.pixelId = "69eeb3dfa24656f95784cafc";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
   </head>
   <body class="bg-white text-navy-900 font-sans antialiased selection:bg-teal-200 selection:text-navy-900">
     <slot />

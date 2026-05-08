@@ -7,11 +7,11 @@ export interface Props {
 
 const {
   title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 97',
-  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Ebook + Planilha + Guia por R$ 97.',
+  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 97.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
-const PIXEL_ID = '1183885533721874';
+const PIXEL_ID = '1008899568248219';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
@@ -72,24 +72,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       window.fbq('init', PIXEL_ID);
       window.fbq('track', 'PageView');
 
-      // ViewContent after 10 seconds on page
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          window.fbq('track', 'ViewContent', {
-            content_name: 'Negócio no Azul',
-            content_category: 'Ebook + Planilha',
-            content_ids: ['I105499750V'],
-            content_type: 'product',
-            value: 97.0,
-            currency: 'BRL',
-          });
-        }, 10000);
+      // ViewContent imediato (sem delay) — Maxxima Fase 1 precisa de sinal rápido
+      window.fbq('track', 'ViewContent', {
+        content_name: 'Negócio no Azul',
+        content_category: 'Cartilha + Planilha',
+        content_ids: ['I105499750V'],
+        content_type: 'product',
+        value: 97.0,
+        currency: 'BRL',
       });
 
-      // InitiateCheckout on any buy button click
+      // gera/recupera event_id estável por sessão para dedup com CAPI server-side
+      function naEventId() {
+        try {
+          var k = 'na_ic_evt';
+          var v = sessionStorage.getItem(k);
+          if (!v) {
+            v = 'ic_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+            sessionStorage.setItem(k, v);
+          }
+          return v;
+        } catch (e) {
+          return 'ic_' + Date.now();
+        }
+      }
+
+      // InitiateCheckout — usa sendBeacon antes do redirect pra não perder evento em mobile
       window.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('[data-cta="checkout"]').forEach(function (btn) {
           btn.addEventListener('click', function () {
+            var eventID = naEventId();
             window.fbq('track', 'InitiateCheckout', {
               content_name: 'Negócio no Azul',
               content_ids: ['I105499750V'],
@@ -97,7 +109,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
               value: 97.0,
               currency: 'BRL',
               num_items: 1,
-            });
+            }, { eventID: eventID });
+
+            // Fallback sendBeacon — garante envio mesmo se navegador for embora antes do XHR
+            try {
+              if (navigator.sendBeacon) {
+                var body = new URLSearchParams({
+                  id: PIXEL_ID,
+                  ev: 'InitiateCheckout',
+                  cd: JSON.stringify({ value: 97, currency: 'BRL', content_ids: ['I105499750V'] }),
+                  eid: eventID,
+                });
+                navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());
+              }
+            } catch (e) {}
           });
         });
       });
@@ -116,7 +141,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       '@context': 'https://schema.org',
       '@type': 'Product',
       name: 'Negócio no Azul',
-      description: 'Ebook + Planilha + Guia para você sair do caos financeiro do seu negócio em 7 dias usando o método A.Z.U.L.',
+      description: 'Cartilha + Planilha + Guia para você sair do caos financeiro do seu negócio em 7 dias usando o método A.Z.U.L.',
       brand: { '@type': 'Brand', name: 'Anderson Cruz' },
       offers: {
         '@type': 'Offer',

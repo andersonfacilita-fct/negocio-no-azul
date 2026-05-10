@@ -6,8 +6,8 @@ export interface Props {
 }
 
 const {
-  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 97',
-  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 97.',
+  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 67',
+  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 67.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
@@ -78,7 +78,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         content_category: 'Cartilha + Planilha',
         content_ids: ['I105499750V'],
         content_type: 'product',
-        value: 97.0,
+        value: 67.0,
         currency: 'BRL',
       });
 
@@ -106,7 +106,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
               content_name: 'Negócio no Azul',
               content_ids: ['I105499750V'],
               content_type: 'product',
-              value: 97.0,
+              value: 67.0,
               currency: 'BRL',
               num_items: 1,
             }, { eventID: eventID });
@@ -117,7 +117,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
                 var body = new URLSearchParams({
                   id: PIXEL_ID,
                   ev: 'InitiateCheckout',
-                  cd: JSON.stringify({ value: 97, currency: 'BRL', content_ids: ['I105499750V'] }),
+                  cd: JSON.stringify({ value: 67, currency: 'BRL', content_ids: ['I105499750V'] }),
                   eid: eventID,
                 });
                 navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());
@@ -145,7 +145,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       brand: { '@type': 'Brand', name: 'Anderson Cruz' },
       offers: {
         '@type': 'Offer',
-        price: '97.00',
+        price: '67.00',
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         url: 'https://pay.hotmart.com/I105499750V?checkoutMode=2',

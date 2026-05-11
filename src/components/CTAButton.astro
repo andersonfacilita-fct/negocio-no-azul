@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const {
-  label = 'QUERO COLOCAR MEU NEGÓCIO NO AZUL - R$ 67',
+  label = 'COMPRAR AGORA · R$ 67',
   size = 'lg',
   variant = 'primary',
   fullWidth = false,
@@ -36,9 +36,7 @@ const variantClasses = {
 <a
   href={CHECKOUT_URL}
   data-cta="checkout"
-  target="_blank"
-  rel="noopener"
-  class={`inline-flex items-center justify-center gap-2 rounded-2xl font-bold font-display uppercase tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${sizeClasses[size]} ${variantClasses[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
+  class={`hotmart-fb hotmart__button-checkout inline-flex items-center justify-center gap-2 rounded-2xl font-bold font-display uppercase tracking-wide transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer ${sizeClasses[size]} ${variantClasses[variant]} ${fullWidth ? 'w-full' : ''} ${className}`}
 >
   <span class="text-center leading-tight">{label}</span>
   {showArrow && (

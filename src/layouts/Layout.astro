@@ -50,6 +50,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       rel="stylesheet"
     />
 
+    <!-- Hotmart Checkout Widget (modal inline ao invés de redirect) -->
+    <link rel="stylesheet" type="text/css" href="https://static.hotmart.com/css/hotmart-fb.min.css" />
+    <script src="https://static.hotmart.com/checkout/widget.min.js" defer></script>
+
     <!-- Meta Pixel -->
     <script is:inline define:vars={{ PIXEL_ID }}>
       !(function (f, b, e, v, n, t, s) {

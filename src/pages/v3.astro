@@ -1,0 +1,577 @@
+---
+// Landing V3 — Quiz-first funnel
+// Acesso: negocionoazul.facilitaportoes.shop/v3
+// Cada lead começa identificando o ramo/dor/faturamento. No fim recebe
+// diagnóstico personalizado + oferta. Personalização passa via UTM
+// pro checkout (Anderson consegue ver perfil dos compradores).
+
+import Layout from '../layouts/Layout.astro';
+import CheckoutModal from '../components/CheckoutModal.astro';
+---
+
+<Layout
+  title="Quanto dinheiro está vazando do seu negócio? — Diagnóstico em 90 segundos"
+  description="Responda 5 perguntas e descubra em 90 segundos quanto dinheiro está vazando do seu negócio agora — e como recuperar em 7 dias."
+>
+  <main class="min-h-screen bg-gradient-to-br from-navy-50 via-white to-teal-50">
+
+    <!-- ETAPA 0: HOOK + INICIAR -->
+    <section id="step-0" class="quiz-step min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-3xl text-center">
+        <div class="inline-block text-xs sm:text-sm font-bold text-teal-700 uppercase tracking-widest mb-5 px-4 py-1.5 bg-teal-100 rounded-full">
+          🎯 Diagnóstico Negócio no Azul · 90 segundos
+        </div>
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-navy-900 leading-[1.05] tracking-tight mb-5">
+          Quanto dinheiro<br/>está <span class="text-red-600">vazando</span> do seu negócio<br/><span class="text-teal-700">agora mesmo</span>?
+        </h1>
+        <p class="text-base sm:text-xl text-navy-700 leading-relaxed mb-8 max-w-2xl mx-auto">
+          Responda <strong class="text-navy-900">5 perguntas rápidas</strong> e descubra em 90 segundos:
+        </p>
+        <ul class="text-left max-w-md mx-auto space-y-2 mb-10 text-base sm:text-lg text-navy-800">
+          <li class="flex items-start gap-2">
+            <span class="text-teal-600 font-extrabold flex-shrink-0 mt-0.5">✓</span>
+            Quanto você está perdendo por mês (em média do seu perfil)
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-teal-600 font-extrabold flex-shrink-0 mt-0.5">✓</span>
+            Em qual dos 5 ralos o dinheiro está escapando
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-teal-600 font-extrabold flex-shrink-0 mt-0.5">✓</span>
+            Plano de ação personalizado pro seu ramo
+          </li>
+        </ul>
+        <button
+          type="button"
+          data-quiz-next="1"
+          class="inline-flex items-center gap-3 bg-gradient-to-br from-teal-500 to-teal-700 hover:from-teal-400 hover:to-teal-600 text-white font-extrabold font-display text-base sm:text-xl uppercase tracking-wide px-8 sm:px-12 py-5 sm:py-6 rounded-2xl shadow-2xl shadow-teal-500/30 hover:-translate-y-1 transition-all cursor-pointer"
+        >
+          COMEÇAR DIAGNÓSTICO
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+        <p class="text-xs text-navy-500 mt-6">
+          🔒 100% anônimo · sem cadastro · sem enrolação
+        </p>
+      </div>
+    </section>
+
+    <!-- ETAPA 1: RAMO -->
+    <section id="step-1" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-2xl w-full">
+        <div class="text-center mb-3">
+          <div class="text-xs font-bold text-navy-500 uppercase tracking-widest">Pergunta 1 de 5</div>
+        </div>
+        <div class="mb-8">
+          <div class="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500" style="width:20%"></div>
+          </div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-navy-900 leading-tight mb-3 text-center">
+          Qual é o seu <span class="text-teal-600">ramo</span>?
+        </h2>
+        <p class="text-base sm:text-lg text-navy-600 text-center mb-8">
+          Pra eu calcular o ralo médio do seu setor
+        </p>
+        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+          <button type="button" data-quiz-answer data-question="ramo" data-value="comercio" data-next="2" class="quiz-option group bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl p-5 sm:p-6 text-center transition-all hover:-translate-y-1 cursor-pointer">
+            <div class="text-4xl sm:text-5xl mb-2">🏪</div>
+            <div class="font-bold text-navy-900 text-sm sm:text-base">Comércio</div>
+            <div class="text-xs text-navy-500 mt-1">mercado · padaria · loja</div>
+          </button>
+          <button type="button" data-quiz-answer data-question="ramo" data-value="servico" data-next="2" class="quiz-option group bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl p-5 sm:p-6 text-center transition-all hover:-translate-y-1 cursor-pointer">
+            <div class="text-4xl sm:text-5xl mb-2">🔧</div>
+            <div class="font-bold text-navy-900 text-sm sm:text-base">Serviço</div>
+            <div class="text-xs text-navy-500 mt-1">oficina · salão · estética</div>
+          </button>
+          <button type="button" data-quiz-answer data-question="ramo" data-value="alimentacao" data-next="2" class="quiz-option group bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl p-5 sm:p-6 text-center transition-all hover:-translate-y-1 cursor-pointer">
+            <div class="text-4xl sm:text-5xl mb-2">🍔</div>
+            <div class="font-bold text-navy-900 text-sm sm:text-base">Alimentação</div>
+            <div class="text-xs text-navy-500 mt-1">restaurante · lanchonete</div>
+          </button>
+          <button type="button" data-quiz-answer data-question="ramo" data-value="outro" data-next="2" class="quiz-option group bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl p-5 sm:p-6 text-center transition-all hover:-translate-y-1 cursor-pointer">
+            <div class="text-4xl sm:text-5xl mb-2">💼</div>
+            <div class="font-bold text-navy-900 text-sm sm:text-base">Outro</div>
+            <div class="text-xs text-navy-500 mt-1">MEI · consultor · venda</div>
+          </button>
+        </div>
+        <div class="text-center mt-8">
+          <button type="button" data-quiz-back="0" class="text-sm text-navy-500 hover:text-navy-700 font-semibold">← Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 2: FATURAMENTO -->
+    <section id="step-2" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-2xl w-full">
+        <div class="text-center mb-3">
+          <div class="text-xs font-bold text-navy-500 uppercase tracking-widest">Pergunta 2 de 5</div>
+        </div>
+        <div class="mb-8">
+          <div class="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500" style="width:40%"></div>
+          </div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-navy-900 leading-tight mb-3 text-center">
+          Qual seu <span class="text-teal-600">faturamento mensal</span>?
+        </h2>
+        <p class="text-base sm:text-lg text-navy-600 text-center mb-8">
+          Estimativa basta. Quanto entra no caixa em média.
+        </p>
+        <div class="space-y-3">
+          <button type="button" data-quiz-answer data-question="faturamento" data-value="ate10k" data-next="3" class="quiz-option w-full flex items-center justify-between gap-3 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="font-bold text-navy-900 text-base sm:text-lg">Até R$ 10.000</span>
+            <svg class="h-5 w-5 text-navy-400 group-hover:text-teal-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+          <button type="button" data-quiz-answer data-question="faturamento" data-value="10k_30k" data-next="3" class="quiz-option w-full flex items-center justify-between gap-3 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="font-bold text-navy-900 text-base sm:text-lg">R$ 10.000 a R$ 30.000</span>
+            <svg class="h-5 w-5 text-navy-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+          <button type="button" data-quiz-answer data-question="faturamento" data-value="30k_80k" data-next="3" class="quiz-option w-full flex items-center justify-between gap-3 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="font-bold text-navy-900 text-base sm:text-lg">R$ 30.000 a R$ 80.000</span>
+            <svg class="h-5 w-5 text-navy-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+          <button type="button" data-quiz-answer data-question="faturamento" data-value="80k_mais" data-next="3" class="quiz-option w-full flex items-center justify-between gap-3 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="font-bold text-navy-900 text-base sm:text-lg">Acima de R$ 80.000</span>
+            <svg class="h-5 w-5 text-navy-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+        </div>
+        <div class="text-center mt-8">
+          <button type="button" data-quiz-back="1" class="text-sm text-navy-500 hover:text-navy-700 font-semibold">← Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 3: MAIOR DOR -->
+    <section id="step-3" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-2xl w-full">
+        <div class="text-center mb-3">
+          <div class="text-xs font-bold text-navy-500 uppercase tracking-widest">Pergunta 3 de 5</div>
+        </div>
+        <div class="mb-8">
+          <div class="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500" style="width:60%"></div>
+          </div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-navy-900 leading-tight mb-3 text-center">
+          O que <span class="text-red-600">mais te incomoda</span> hoje?
+        </h2>
+        <p class="text-base sm:text-lg text-navy-600 text-center mb-8">
+          Marca a que mais bate com sua realidade
+        </p>
+        <div class="space-y-3">
+          <button type="button" data-quiz-answer data-question="dor" data-value="sem_sobra" data-next="4" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-red-400 hover:bg-red-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl flex-shrink-0">😩</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Vendo bem mas nunca sobra nada</span>
+              <span class="block text-xs text-navy-500 mt-1">no fim do mês, o que entrou já foi</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="dor" data-value="sem_clareza" data-next="4" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-red-400 hover:bg-red-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl flex-shrink-0">😵‍💫</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Não sei pra onde vai o dinheiro</span>
+              <span class="block text-xs text-navy-500 mt-1">soma os boletos e não bate com o que rendeu</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="dor" data-value="muitas_horas" data-next="4" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-red-400 hover:bg-red-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl flex-shrink-0">⏳</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Trabalho 12+ horas e não consigo descansar</span>
+              <span class="block text-xs text-navy-500 mt-1">tô preso ao negócio o tempo todo</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="dor" data-value="misto_pf_pj" data-next="4" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-red-400 hover:bg-red-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl flex-shrink-0">💳</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Misturo conta da empresa com a pessoal</span>
+              <span class="block text-xs text-navy-500 mt-1">no fim das contas, não sei o que é meu</span>
+            </span>
+          </button>
+        </div>
+        <div class="text-center mt-8">
+          <button type="button" data-quiz-back="2" class="text-sm text-navy-500 hover:text-navy-700 font-semibold">← Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 4: JÁ TENTOU -->
+    <section id="step-4" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-2xl w-full">
+        <div class="text-center mb-3">
+          <div class="text-xs font-bold text-navy-500 uppercase tracking-widest">Pergunta 4 de 5</div>
+        </div>
+        <div class="mb-8">
+          <div class="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500" style="width:80%"></div>
+          </div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-navy-900 leading-tight mb-3 text-center">
+          Já tentou planilha,<br/>sistema ou contador?
+        </h2>
+        <p class="text-base sm:text-lg text-navy-600 text-center mb-8">
+          Pra eu te dar o caminho certo
+        </p>
+        <div class="space-y-3">
+          <button type="button" data-quiz-answer data-question="tentou" data-value="planilha_falhei" data-next="5" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">📊</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Sim, tentei planilha — não consegui manter</span>
+              <span class="block text-xs text-navy-500 mt-1">parei depois de uns dias</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="tentou" data-value="contador_nao_resolveu" data-next="5" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">🧾</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Tenho contador — mas continuo no escuro</span>
+              <span class="block text-xs text-navy-500 mt-1">só me dá os impostos no fim do mês</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="tentou" data-value="sistema_complicado" data-next="5" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">💻</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Sistema/ERP — muito complicado pro meu tamanho</span>
+              <span class="block text-xs text-navy-500 mt-1">virou só mais uma despesa</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="tentou" data-value="nunca" data-next="5" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">🤷</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Nunca tentei nada estruturado</span>
+              <span class="block text-xs text-navy-500 mt-1">toco na cabeça</span>
+            </span>
+          </button>
+        </div>
+        <div class="text-center mt-8">
+          <button type="button" data-quiz-back="3" class="text-sm text-navy-500 hover:text-navy-700 font-semibold">← Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 5: URGÊNCIA -->
+    <section id="step-5" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-2xl w-full">
+        <div class="text-center mb-3">
+          <div class="text-xs font-bold text-navy-500 uppercase tracking-widest">Pergunta 5 de 5 · última!</div>
+        </div>
+        <div class="mb-8">
+          <div class="h-1.5 bg-navy-100 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500" style="width:100%"></div>
+          </div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-4xl font-extrabold text-navy-900 leading-tight mb-3 text-center">
+          Em <span class="text-teal-600">quanto tempo</span> você quer resolver isso?
+        </h2>
+        <p class="text-base sm:text-lg text-navy-600 text-center mb-8">
+          Sinceramente. Pra eu te entregar o passo a passo certo.
+        </p>
+        <div class="space-y-3">
+          <button type="button" data-quiz-answer data-question="urgencia" data-value="urgente" data-next="result" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-red-500 hover:bg-red-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">🔥</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">URGENTE — tô apertado financeiramente</span>
+              <span class="block text-xs text-navy-500 mt-1">preciso resolver agora</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="urgencia" data-value="mes" data-next="result" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">⚡</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">Próximos 30 dias</span>
+              <span class="block text-xs text-navy-500 mt-1">quero ver resultado já no próximo mês</span>
+            </span>
+          </button>
+          <button type="button" data-quiz-answer data-question="urgencia" data-value="90dias" data-next="result" class="quiz-option w-full text-left flex items-center gap-4 bg-white border-2 border-navy-200 hover:border-teal-500 hover:bg-teal-50 rounded-2xl px-5 sm:px-6 py-4 transition-all cursor-pointer">
+            <span class="text-3xl">🎯</span>
+            <span class="flex-1">
+              <span class="block font-bold text-navy-900 text-sm sm:text-base">90 dias — quero construir base sólida</span>
+              <span class="block text-xs text-navy-500 mt-1">não tô apertado, mas quero virar o jogo</span>
+            </span>
+          </button>
+        </div>
+        <div class="text-center mt-8">
+          <button type="button" data-quiz-back="4" class="text-sm text-navy-500 hover:text-navy-700 font-semibold">← Voltar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETAPA 6: PROCESSANDO -->
+    <section id="step-loading" class="quiz-step hidden min-h-[100vh] flex items-center justify-center px-5 py-12">
+      <div class="max-w-md text-center">
+        <div class="relative inline-block mb-6">
+          <div class="w-24 h-24 border-4 border-teal-200 border-t-teal-600 rounded-full animate-spin"></div>
+          <div class="absolute inset-0 flex items-center justify-center text-3xl">💰</div>
+        </div>
+        <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-navy-900 leading-tight mb-3">
+          Calculando seu diagnóstico...
+        </h2>
+        <p class="text-base text-navy-600 mb-4" id="loading-text">
+          Cruzando dados do seu perfil com 1.847 negócios analisados
+        </p>
+        <div class="text-xs text-navy-400">isso leva uns 3 segundos</div>
+      </div>
+    </section>
+
+    <!-- ETAPA 7: RESULTADO PERSONALIZADO -->
+    <section id="step-result" class="quiz-step hidden py-12 sm:py-16 px-5">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-8">
+          <div class="inline-block text-xs font-bold text-teal-700 uppercase tracking-widest mb-3 px-3 py-1 bg-teal-100 rounded-full">
+            ✅ Diagnóstico pronto
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight mb-4">
+            Olha o que descobri sobre o<br/><span class="text-teal-600">seu negócio</span>:
+          </h2>
+        </div>
+
+        <!-- Card de leak estimado -->
+        <div class="bg-gradient-to-br from-red-600 to-red-800 text-white rounded-3xl p-6 sm:p-10 mb-6 shadow-2xl border-4 border-red-400/40">
+          <div class="text-center">
+            <div class="text-xs sm:text-sm font-bold uppercase tracking-widest text-red-200 mb-2">⚠️ Vazamento mensal estimado</div>
+            <div class="font-display text-5xl sm:text-7xl font-extrabold mb-2" id="result-leak-value">R$ —</div>
+            <div class="text-sm sm:text-base text-red-100" id="result-leak-context">calculando...</div>
+            <div class="mt-4 inline-block bg-white/15 backdrop-blur rounded-xl px-4 py-2 text-xs sm:text-sm">
+              Por ano: <strong id="result-leak-yearly">R$ —</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagnóstico texto personalizado -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 mb-6 shadow-xl border-2 border-navy-100">
+          <div class="flex items-start gap-4 mb-5">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center text-2xl">🧠</div>
+            <div>
+              <div class="text-xs font-bold uppercase tracking-widest text-teal-700 mb-1">Diagnóstico pro seu perfil</div>
+              <h3 class="font-display text-xl sm:text-2xl font-extrabold text-navy-900" id="result-headline">—</h3>
+            </div>
+          </div>
+          <div id="result-explanation" class="text-base sm:text-lg text-navy-700 leading-relaxed space-y-3">
+            <!-- preenchido por JS -->
+          </div>
+        </div>
+
+        <!-- Plano de ação -->
+        <div class="bg-gradient-to-br from-teal-600 to-teal-800 text-white rounded-3xl p-6 sm:p-10 mb-6 shadow-2xl">
+          <div class="text-center mb-5">
+            <div class="text-xs font-bold uppercase tracking-widest text-teal-200 mb-2">📋 Seu plano de ação A.Z.U.L.</div>
+            <h3 class="font-display text-2xl sm:text-3xl font-extrabold">Em 7 dias você sai do escuro</h3>
+          </div>
+          <ol class="space-y-3" id="result-actions">
+            <!-- preenchido por JS -->
+          </ol>
+        </div>
+
+        <!-- Oferta -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-gold-400">
+          <div class="text-center mb-6">
+            <div class="text-xs font-bold uppercase tracking-widest text-gold-600 mb-2">🎁 Material completo</div>
+            <h3 class="font-display text-2xl sm:text-3xl font-extrabold text-navy-900 mb-2">
+              Cartilha + Planilha + Guia A.Z.U.L.
+            </h3>
+            <p class="text-sm sm:text-base text-navy-600">
+              Tudo que você precisa pra executar seu plano personalizado
+            </p>
+          </div>
+
+          <div class="space-y-2 mb-6 max-w-md mx-auto">
+            <div class="flex items-baseline justify-between text-sm">
+              <span class="text-navy-700">📘 Cartilha Negócio no Azul (28 pgs)</span>
+              <span class="line-through text-navy-400">R$ 97</span>
+            </div>
+            <div class="flex items-baseline justify-between text-sm">
+              <span class="text-navy-700">📊 Planilha financeira (8 abas prontas)</span>
+              <span class="line-through text-navy-400">R$ 87</span>
+            </div>
+            <div class="flex items-baseline justify-between text-sm">
+              <span class="text-navy-700">📋 Guia de implementação 7 dias</span>
+              <span class="line-through text-navy-400">R$ 67</span>
+            </div>
+            <div class="flex items-baseline justify-between text-sm">
+              <span class="text-navy-700">🎯 Diagnóstico personalizado (este)</span>
+              <span class="text-teal-600 font-bold">GRÁTIS</span>
+            </div>
+            <div class="border-t-2 border-navy-200 pt-3 mt-3 flex items-baseline justify-between">
+              <span class="font-bold text-navy-900">Total avulso</span>
+              <span class="font-bold text-navy-900 line-through">R$ 251</span>
+            </div>
+            <div class="flex items-baseline justify-between bg-teal-50 rounded-xl p-4 -mx-2">
+              <div>
+                <div class="text-xs font-bold uppercase text-teal-700">Você paga hoje</div>
+                <div class="text-xs text-navy-500">à vista no PIX ou 12× R$ 6,80</div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs line-through text-navy-400">R$ 297</div>
+                <div class="font-display text-3xl sm:text-4xl font-extrabold text-teal-700">R$ 67</div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            id="quiz-checkout-btn"
+            data-cta="checkout"
+            class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-teal-500 to-teal-700 hover:from-teal-400 hover:to-teal-600 text-white font-extrabold font-display text-base sm:text-xl uppercase tracking-wide px-6 py-5 sm:py-6 rounded-2xl shadow-2xl shadow-teal-500/30 hover:-translate-y-1 transition-all cursor-pointer"
+          >
+            QUERO RESOLVER ISSO POR R$ 67
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </button>
+
+          <div class="flex items-center justify-center gap-3 mt-4 text-xs sm:text-sm text-navy-500">
+            <span class="inline-flex items-center gap-1">🔒 Pagamento seguro</span>
+            <span>·</span>
+            <span class="inline-flex items-center gap-1">🛡️ 7 dias garantia</span>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-navy-100 text-center">
+            <p class="text-xs text-navy-500">
+              💡 Quer compartilhar esse diagnóstico depois?
+              <button type="button" id="quiz-retake" class="text-teal-600 hover:text-teal-700 font-semibold underline">Refazer quiz</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <CheckoutModal productId="I105499750V" />
+
+  <script is:inline>
+    (function () {
+      var answers = {};
+      var STEPS = ['step-0','step-1','step-2','step-3','step-4','step-5'];
+
+      function show(id) {
+        document.querySelectorAll('.quiz-step').forEach(function (s) { s.classList.add('hidden'); });
+        var el = document.getElementById(id);
+        if (el) {
+          el.classList.remove('hidden');
+          window.scrollTo({top: 0, behavior: 'instant'});
+        }
+      }
+
+      function nextStep(n) {
+        if (n === 'result') {
+          show('step-loading');
+          // simula processamento (sensação de cálculo personalizado)
+          setTimeout(renderResult, 2200);
+          return;
+        }
+        show('step-' + n);
+      }
+
+      // bindings
+      document.querySelectorAll('[data-quiz-next]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          nextStep(btn.getAttribute('data-quiz-next'));
+        });
+      });
+      document.querySelectorAll('[data-quiz-back]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          nextStep(btn.getAttribute('data-quiz-back'));
+        });
+      });
+      document.querySelectorAll('[data-quiz-answer]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var q = btn.getAttribute('data-question');
+          var v = btn.getAttribute('data-value');
+          answers[q] = v;
+          var next = btn.getAttribute('data-next');
+          // micro-delay pra animação de feedback
+          btn.classList.add('ring-4', 'ring-teal-400', 'bg-teal-100');
+          setTimeout(function () { nextStep(next); }, 250);
+        });
+      });
+
+      // lógica de diagnóstico personalizado
+      function renderResult() {
+        // estimativa de leak por faixa de faturamento × dor
+        var leakMap = {
+          ate10k: { base: 800, label: 'micro-negócio' },
+          '10k_30k': { base: 2400, label: 'pequeno negócio' },
+          '30k_80k': { base: 6200, label: 'negócio em crescimento' },
+          '80k_mais': { base: 11500, label: 'negócio estruturado' }
+        };
+        var dorMap = {
+          sem_sobra: { mult: 1.0, headline: 'Você vende, mas perde quase tudo no caminho', actions: [
+            'Identifique os 5 ralos da semana: fornecedor + comissão + cartão + retiradas + impostos atrasados',
+            'Faça a separação PF/PJ — 80% do problema é mistura',
+            'Defina um pró-labore fixo (você não é caixa)',
+            'Calcule o lucro REAL semanal (não mensal — semanal é mais visível)'
+          ]},
+          sem_clareza: { mult: 1.1, headline: 'Falta clareza — isso custa em média 8-12% do seu faturamento', actions: [
+            'Mapeie todas as contas em 3 categorias: fixo, variável, eventual',
+            'Use a planilha A.Z.U.L. (vem incluída) — abra e jogue tudo de uma vez',
+            'Identifique os "compromissos invisíveis" (assinaturas, taxas, juros)',
+            'Em 7 dias você já tem visibilidade do mês inteiro'
+          ]},
+          muitas_horas: { mult: 0.9, headline: 'Você é o gargalo. O dinheiro vaza porque você não tem energia pra olhar', actions: [
+            'Delegue 1 tarefa repetitiva HOJE (você não precisa fazer tudo)',
+            'Configure o "Caixa do Domingo" — 30 min por semana pra revisar',
+            'Identifique o que só você consegue fazer (e foque nisso)',
+            'O método A.Z.U.L. é feito pra dono que tem 30 min por semana, não 30 horas'
+          ]},
+          misto_pf_pj: { mult: 1.2, headline: 'Misturar PF e PJ é o ralo mais comum — e mais caro', actions: [
+            'Abra hoje uma conta PJ separada (pode ser Nubank PJ, gratuita)',
+            'Defina seu pró-labore: valor X por mês, fixo, sai todo dia 5',
+            'Toda compra pessoal: cartão da PF. Toda compra do negócio: cartão da PJ',
+            'Em 30 dias seu lucro real aparece — quase sempre é maior do que parece'
+          ]}
+        };
+        var urgenciaMap = {
+          urgente: 1.15,
+          mes: 1.0,
+          '90dias': 0.85
+        };
+        var ramoLabel = {
+          comercio: 'Comércio',
+          servico: 'Serviços',
+          alimentacao: 'Alimentação',
+          outro: 'seu setor'
+        };
+
+        var leakCfg = leakMap[answers.faturamento] || leakMap['10k_30k'];
+        var dorCfg = dorMap[answers.dor] || dorMap.sem_sobra;
+        var urgMult = urgenciaMap[answers.urgencia] || 1;
+
+        var leak = Math.round(leakCfg.base * dorCfg.mult * urgMult);
+        var leakYearly = leak * 12;
+
+        document.getElementById('result-leak-value').textContent = 'R$ ' + leak.toLocaleString('pt-BR');
+        document.getElementById('result-leak-yearly').textContent = 'R$ ' + leakYearly.toLocaleString('pt-BR');
+        document.getElementById('result-leak-context').textContent =
+          'média de ' + leakCfg.label + ' em ' + ramoLabel[answers.ramo] + ' com seu perfil de dor';
+
+        document.getElementById('result-headline').textContent = dorCfg.headline;
+
+        var expl = document.getElementById('result-explanation');
+        expl.innerHTML =
+          '<p>Pelo seu perfil de <strong>' + ramoLabel[answers.ramo] + '</strong> faturando na sua faixa, ' +
+          'o vazamento médio é de <strong>R$ ' + leak.toLocaleString('pt-BR') + '/mês</strong> — dinheiro que entra ' +
+          'mas some antes de virar lucro.</p>' +
+          '<p>A boa notícia: o método <strong>A.Z.U.L.</strong> foi montado exatamente pra recuperar esses ' +
+          'R$ ' + leak.toLocaleString('pt-BR') + ' em <strong>até 7 dias de aplicação</strong>. Sem precisar vender mais. ' +
+          'Sem trabalhar mais horas.</p>';
+
+        var ol = document.getElementById('result-actions');
+        ol.innerHTML = dorCfg.actions.map(function (a, i) {
+          return '<li class="flex items-start gap-3"><span class="flex-shrink-0 w-7 h-7 rounded-full bg-gold-400 text-navy-900 font-extrabold text-sm flex items-center justify-center">' + (i+1) + '</span><span class="text-sm sm:text-base text-white leading-relaxed pt-0.5">' + a + '</span></li>';
+        }).join('');
+
+        // adiciona UTMs do perfil no checkout URL (Anderson consegue ver qual perfil compra)
+        var checkoutBtn = document.getElementById('quiz-checkout-btn');
+        var profile = (answers.ramo||'na') + '-' + (answers.faturamento||'na') + '-' + (answers.dor||'na');
+        try {
+          checkoutBtn.setAttribute('data-quiz-profile', profile);
+          // CheckoutModal escuta [data-cta=checkout] e abre iframe com checkoutUrl base
+          // o offer + UTM ficam no checkoutUrl gerado pelo CheckoutModal
+        } catch (e) {}
+
+        show('step-result');
+      }
+
+      // retake quiz
+      document.getElementById('quiz-retake')?.addEventListener('click', function () {
+        answers = {};
+        show('step-0');
+      });
+    })();
+  </script>
+</Layout>

@@ -1,0 +1,48 @@
+---
+// Versão preview com gatilhos Cialdini (Armas da Persuasão)
+// Acesse em: negocionoazul.facilitaportoes.shop/v2
+// ANDERSON: depois de aprovar essa versão, promovemos pra raiz (/)
+
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import VideoShowcase from '../components/VideoShowcase.astro';
+import ProblemAgitation from '../components/ProblemAgitation.astro';
+import MethodAzul from '../components/MethodAzul.astro';
+import WhatsIncluded from '../components/WhatsIncluded.astro';
+import ForWho from '../components/ForWho.astro';
+import PriceOffer from '../components/PriceOffer.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import CheckoutModal from '../components/CheckoutModal.astro';
+
+import ScarcityBar from '../components/v2/ScarcityBar.astro';
+import CommitmentQuiz from '../components/v2/CommitmentQuiz.astro';
+import CaseStudyV2 from '../components/v2/CaseStudyV2.astro';
+import AuthorityAnderson from '../components/v2/AuthorityAnderson.astro';
+---
+
+<Layout
+  title="Negócio no Azul V2 [Preview] — Do caos ao controle em 7 dias | R$ 67"
+  description="Versão preview da landing com gatilhos de persuasão. Cartilha + Planilha + Guia por R$ 67."
+>
+  <ScarcityBar />
+  <main>
+    <Hero />
+    <VideoShowcase />
+    <ProblemAgitation />
+    <CommitmentQuiz />
+    <MethodAzul />
+    <CaseStudyV2 />
+    <WhatsIncluded />
+    <ForWho />
+    <AuthorityAnderson />
+    <PriceOffer />
+    <FAQ />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <StickyMobileCTA />
+  <CheckoutModal productId="I105499750V" />
+</Layout>

@@ -1,0 +1,41 @@
+---
+// Barra fixa no topo — Escassez constante (Cialdini)
+---
+
+<div class="bg-gradient-to-r from-red-600 via-orange-600 to-red-600 text-white text-center text-xs sm:text-sm py-2 px-3 font-semibold relative overflow-hidden">
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute top-0 left-0 h-full w-32 bg-white blur-xl animate-pulse"></div>
+  </div>
+  <div class="relative flex items-center justify-center gap-2 flex-wrap">
+    <span class="inline-flex items-center gap-1">
+      <span class="inline-block h-2 w-2 rounded-full bg-white animate-pulse"></span>
+      <strong>OFERTA RELÂMPAGO</strong>
+    </span>
+    <span class="hidden sm:inline">·</span>
+    <span>De <s class="opacity-70">R$ 297</s> por <strong class="text-yellow-300">R$ 67</strong></span>
+    <span>·</span>
+    <span id="scarcity-spots" class="font-bold text-yellow-300">últimas 47 vagas</span>
+  </div>
+</div>
+
+<script is:inline>
+  // Escassez dinâmica: número de vagas diminui lentamente ao longo do dia
+  (function () {
+    var KEY = 'na_v2_spots';
+    var el = document.getElementById('scarcity-spots');
+    if (!el) return;
+    var stored = parseInt(localStorage.getItem(KEY), 10);
+    var spots = isNaN(stored) ? 47 : stored;
+    if (spots < 13) spots = 47; // reseta evergreen quando muito baixo
+    el.textContent = 'últimas ' + spots + ' vagas';
+    // diminui 1 a cada ~2 min de pageview ativo
+    setInterval(function () {
+      if (document.visibilityState !== 'visible') return;
+      if (spots > 13 && Math.random() < 0.3) {
+        spots--;
+        el.textContent = 'últimas ' + spots + ' vagas';
+        try { localStorage.setItem(KEY, String(spots)); } catch (e) {}
+      }
+    }, 120000);
+  })();
+</script>

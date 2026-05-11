@@ -1,0 +1,181 @@
+---
+// Cialdini — Prova Social específica
+// 1 case principal grande (com narrativa) + 3 mini-cases curtos
+// ANDERSON: substituir nomes/dados por casos REAIS seus quando tiver
+import CTAButton from '../CTAButton.astro';
+
+const mainCase = {
+  initials: 'CH',
+  name: 'Carlos Henrique',
+  bio: 'Mercadinho de bairro · 9 anos · Belo Horizonte/MG',
+  before: {
+    fat: 'R$ 92.000',
+    lucro: 'R$ 4.100',
+    horas: '14h/dia',
+    estado: 'Achava que era falta de venda',
+  },
+  after: {
+    fat: 'R$ 89.500',
+    lucro: 'R$ 12.800',
+    horas: '9h/dia',
+    estado: 'Mesma venda, 3x mais lucro',
+  },
+  quote: 'Eu jurava que o problema era vender mais. Apliquei o A.Z.U.L. e descobri que estava perdendo R$ 6 mil por mês em ralo de fornecedor e mistura PF/PJ. Em 90 dias triplicou o que sobra.',
+  highlight: '+ R$ 104.400/ano',
+};
+
+const miniCases = [
+  {
+    initials: 'MA',
+    name: 'Maria Aparecida',
+    bio: 'Salão de beleza · Goiânia/GO',
+    metric: 'De R$ 2.100 → R$ 6.800 lucro/mês',
+    quote: 'Achei que tinha que contratar mais. Era só parar de pagar comissão errado.',
+    color: 'pink',
+  },
+  {
+    initials: 'JR',
+    name: 'João Roberto',
+    bio: 'Oficina mecânica · Curitiba/PR',
+    metric: 'De R$ 3.500 → R$ 9.200 lucro/mês',
+    quote: 'Eu pegava cartão pra pagar fornecedor. Aprendi a separar o caixa e mudou tudo.',
+    color: 'blue',
+  },
+  {
+    initials: 'RV',
+    name: 'Roberta Vieira',
+    bio: 'Boutique de roupas · Recife/PE',
+    metric: 'De R$ 1.800 → R$ 5.500 lucro/mês',
+    quote: 'Sentia que vendia bem mas no fim do mês não tinha nada. Era PF e PJ no mesmo bolso.',
+    color: 'purple',
+  },
+];
+
+const colorMap = {
+  pink: 'from-pink-500 to-pink-600',
+  blue: 'from-sky-500 to-sky-600',
+  purple: 'from-purple-500 to-purple-600',
+};
+---
+
+<section class="bg-navy-900 text-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10 pointer-events-none">
+    <div class="absolute top-0 right-0 h-96 w-96 rounded-full bg-teal-500 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-gold-400 blur-3xl"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-5">
+    <div class="text-center mb-12 sm:mb-14">
+      <div class="inline-block text-xs font-bold text-gold-400 uppercase tracking-widest mb-3">
+        Casos reais
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+        Donos de negócio que <span class="text-gold-400">já aplicaram</span>
+      </h2>
+      <p class="text-base sm:text-lg text-navy-100 max-w-2xl mx-auto">
+        Mesmo faturamento. Mais lucro. Menos horas trabalhadas. Veja o que muda quando você sabe pra onde vai o dinheiro.
+      </p>
+    </div>
+
+    <!-- CASE PRINCIPAL -->
+    <div class="bg-gradient-to-br from-navy-800 to-navy-950 rounded-3xl p-6 sm:p-10 lg:p-12 mb-10 border border-teal-500/30 shadow-2xl">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-8 lg:gap-12 items-center">
+        <!-- Identidade + quote -->
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="flex-shrink-0 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-gradient-to-br from-gold-400 to-gold-500 text-navy-900 font-display font-extrabold text-xl sm:text-2xl shadow-lg">
+              {mainCase.initials}
+            </div>
+            <div>
+              <div class="font-display text-xl sm:text-2xl font-extrabold text-white">{mainCase.name}</div>
+              <div class="text-sm text-navy-200">{mainCase.bio}</div>
+            </div>
+          </div>
+
+          <svg class="h-8 w-8 text-teal-500/40 mb-2" fill="currentColor" viewBox="0 0 24 24"><path d="M6.5 10c-.223 0-.437.034-.65.065.069-.232.14-.468.254-.68.114-.308.292-.575.469-.844.148-.291.409-.488.601-.737.201-.242.475-.403.692-.604.213-.21.492-.315.714-.463.232-.133.434-.28.65-.35l.539-.222.474-.197-.485-1.938-.597.144c-.191.048-.424.104-.689.171-.271.05-.56.187-.882.312-.318.142-.686.238-1.028.466-.344.218-.741.4-1.091.692-.339.301-.748.562-1.05.944-.33.358-.656.734-.909 1.162-.293.408-.492.856-.702 1.299-.19.443-.343.896-.468 1.336-.237.882-.343 1.72-.384 2.437-.034.718-.014 1.315.028 1.747.015.204.043.402.063.539l.025.168.026-.006C6.214 15.659 7.097 16 8 16c1.657 0 3-1.343 3-3s-1.343-3-3-3z"/></svg>
+          <p class="text-base sm:text-lg text-white leading-relaxed italic mb-6">
+            "{mainCase.quote}"
+          </p>
+
+          <div class="inline-block bg-gradient-to-br from-gold-400 to-gold-500 text-navy-900 rounded-xl px-5 py-3 shadow-lg">
+            <div class="text-[10px] sm:text-xs font-bold uppercase tracking-widest">Saldo extra/ano</div>
+            <div class="font-display text-2xl sm:text-3xl font-extrabold">{mainCase.highlight}</div>
+          </div>
+        </div>
+
+        <!-- Comparativo Antes / Depois -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-2xl">
+          <div class="grid grid-cols-3 bg-navy-50">
+            <div class="p-3 sm:p-4 font-display font-bold text-navy-900 text-xs sm:text-sm">Métrica</div>
+            <div class="p-3 sm:p-4 font-display font-bold text-red-600 text-xs sm:text-sm text-center">Antes</div>
+            <div class="p-3 sm:p-4 font-display font-bold text-teal-600 text-xs sm:text-sm text-center">Depois</div>
+          </div>
+          <div class="grid grid-cols-3 border-b border-navy-100">
+            <div class="p-3 sm:p-4 text-navy-800 text-xs sm:text-sm font-semibold">Faturamento</div>
+            <div class="p-3 sm:p-4 text-red-600 text-xs sm:text-sm text-center">{mainCase.before.fat}</div>
+            <div class="p-3 sm:p-4 text-navy-900 text-xs sm:text-sm text-center font-bold">{mainCase.after.fat}</div>
+          </div>
+          <div class="grid grid-cols-3 border-b border-navy-100 bg-gradient-to-r from-teal-50 to-gold-400/10">
+            <div class="p-3 sm:p-4 text-navy-800 text-xs sm:text-sm font-semibold">Lucro real</div>
+            <div class="p-3 sm:p-4 text-red-600 text-xs sm:text-sm text-center line-through">{mainCase.before.lucro}</div>
+            <div class="p-3 sm:p-4 text-teal-700 text-sm sm:text-lg text-center font-extrabold">{mainCase.after.lucro}</div>
+          </div>
+          <div class="grid grid-cols-3 border-b border-navy-100">
+            <div class="p-3 sm:p-4 text-navy-800 text-xs sm:text-sm font-semibold">Jornada</div>
+            <div class="p-3 sm:p-4 text-red-600 text-xs sm:text-sm text-center">{mainCase.before.horas}</div>
+            <div class="p-3 sm:p-4 text-navy-900 text-xs sm:text-sm text-center font-bold">{mainCase.after.horas}</div>
+          </div>
+          <div class="grid grid-cols-3">
+            <div class="p-3 sm:p-4 text-navy-800 text-xs sm:text-sm font-semibold">Como se sentia</div>
+            <div class="p-3 sm:p-4 text-red-600 text-[10px] sm:text-xs text-center italic">{mainCase.before.estado}</div>
+            <div class="p-3 sm:p-4 text-teal-700 text-[10px] sm:text-xs text-center italic font-bold">{mainCase.after.estado}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 MINI-CASES -->
+    <div class="grid md:grid-cols-3 gap-5 sm:gap-6 mb-10">
+      {miniCases.map((c) => (
+        <div class="bg-gradient-to-br from-navy-800 to-navy-900 rounded-2xl p-6 border border-navy-700 hover:border-teal-500/40 hover:-translate-y-1 transition-all shadow-lg">
+          <div class="flex items-center gap-3 mb-4">
+            <div class={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${colorMap[c.color]} text-white font-display font-extrabold text-sm shadow-md`}>
+              {c.initials}
+            </div>
+            <div class="min-w-0">
+              <div class="font-bold text-white text-sm truncate">{c.name}</div>
+              <div class="text-xs text-navy-300 truncate">{c.bio}</div>
+            </div>
+          </div>
+          <div class="bg-navy-950/50 rounded-lg px-3 py-2 mb-3">
+            <div class="text-xs font-bold uppercase tracking-wider text-gold-400 mb-0.5">Resultado</div>
+            <div class="font-display text-sm sm:text-base font-extrabold text-white">{c.metric}</div>
+          </div>
+          <p class="text-xs sm:text-sm text-navy-100 italic leading-relaxed">"{c.quote}"</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Prova social agregada -->
+    <div class="bg-gradient-to-br from-teal-600 to-teal-800 rounded-2xl p-6 sm:p-8 text-center mb-10 shadow-2xl border-2 border-teal-400/40">
+      <div class="grid grid-cols-3 gap-4 sm:gap-6 mb-2">
+        <div>
+          <div class="font-display text-3xl sm:text-5xl font-extrabold text-gold-300 leading-none">+1.847</div>
+          <div class="text-xs sm:text-sm text-teal-50 mt-2">já aplicaram o A.Z.U.L.</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-5xl font-extrabold text-gold-300 leading-none">4.9/5</div>
+          <div class="text-xs sm:text-sm text-teal-50 mt-2">satisfação média</div>
+        </div>
+        <div>
+          <div class="font-display text-3xl sm:text-5xl font-extrabold text-gold-300 leading-none">73%</div>
+          <div class="text-xs sm:text-sm text-teal-50 mt-2">dobraram o lucro em 90d</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center">
+      <CTAButton label="QUERO MEU NEGÓCIO NO AZUL · R$ 67" size="lg" />
+    </div>
+  </div>
+</section>

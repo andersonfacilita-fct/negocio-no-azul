@@ -1,0 +1,114 @@
+---
+// Cialdini — Compromisso e Consistência
+// 3 perguntas SIM/NÃO que travam o lead mentalmente: ao dizer SIM,
+// a pessoa fica consistente em comprar (auto-coerência)
+import CTAButton from '../CTAButton.astro';
+
+const questions = [
+  {
+    icon: '💸',
+    text: 'Você vende, mas no fim do mês não sobra o que devia?',
+  },
+  {
+    icon: '📊',
+    text: 'Sente que falta clareza pra saber pra onde vai cada real?',
+  },
+  {
+    icon: '⏰',
+    text: 'Já tentou planilha, sistema, contador — e mesmo assim continua no escuro?',
+  },
+];
+---
+
+<section class="bg-gradient-to-b from-white to-navy-50 py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-3xl px-5">
+    <div class="text-center mb-10">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        Responda 3 perguntas
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight mb-4">
+        Isso é <span class="text-teal-600">pra você</span>?
+      </h2>
+      <p class="text-base sm:text-lg text-navy-700 max-w-2xl mx-auto">
+        Responda mentalmente. Se a maioria for <strong class="text-teal-700">SIM</strong>, esse material foi feito exatamente pra alguém como você.
+      </p>
+    </div>
+
+    <div class="space-y-4 mb-10">
+      {questions.map((q, i) => (
+        <div class="commitment-card group bg-white rounded-2xl border-2 border-navy-100 shadow-md hover:shadow-xl hover:border-teal-400 transition-all p-5 sm:p-6 cursor-pointer relative overflow-hidden">
+          <div class="flex items-start gap-4 sm:gap-5">
+            <div class="flex-shrink-0 text-3xl sm:text-4xl">{q.icon}</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-display text-sm font-extrabold text-navy-400 uppercase tracking-widest mb-1">Pergunta {i + 1}</div>
+              <p class="text-base sm:text-lg font-semibold text-navy-900 leading-snug">{q.text}</p>
+              <div class="mt-4 flex gap-2 commitment-answer-row">
+                <button
+                  data-answer="yes"
+                  data-q={i}
+                  class="commitment-yes flex-1 sm:flex-none sm:min-w-[120px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-teal-100 hover:bg-teal-500 hover:text-white text-teal-700 font-extrabold text-sm transition-all"
+                >
+                  ✓ Sim
+                </button>
+                <button
+                  data-answer="no"
+                  data-q={i}
+                  class="commitment-no flex-1 sm:flex-none sm:min-w-[120px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-navy-100 hover:bg-navy-300 text-navy-700 font-extrabold text-sm transition-all"
+                >
+                  Não
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Veredito (só aparece após responder) -->
+    <div id="commitment-result" class="hidden">
+      <div class="bg-gradient-to-br from-teal-500 to-teal-700 text-white rounded-2xl p-6 sm:p-8 text-center shadow-2xl border-4 border-gold-400">
+        <div class="text-5xl mb-3">🎯</div>
+        <h3 class="font-display text-2xl sm:text-3xl font-extrabold mb-3">
+          Esse material foi feito <span class="text-gold-300">exatamente pra você</span>
+        </h3>
+        <p class="text-base sm:text-lg text-teal-50 mb-6 max-w-xl mx-auto">
+          O método A.Z.U.L. resolve exatamente isso: parar de vender no escuro e começar a enxergar pra onde o dinheiro está indo - e o que sobra de verdade.
+        </p>
+        <div class="flex justify-center">
+          <CTAButton label="QUERO RESOLVER ISSO · R$ 67" size="lg" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var answered = new Set();
+    document.querySelectorAll('.commitment-yes, .commitment-no').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var q = btn.getAttribute('data-q');
+        var ans = btn.getAttribute('data-answer');
+        var card = btn.closest('.commitment-card');
+        // visual feedback
+        card.querySelectorAll('button').forEach(function (b) {
+          b.classList.remove('ring-4', 'ring-teal-400', 'ring-offset-2', 'bg-teal-500', 'text-white');
+        });
+        btn.classList.add('ring-4', 'ring-teal-400', 'ring-offset-2');
+        if (ans === 'yes') {
+          btn.classList.add('bg-teal-500', 'text-white');
+        }
+        answered.add(q);
+        if (answered.size === 3) {
+          var result = document.getElementById('commitment-result');
+          if (result) {
+            result.classList.remove('hidden');
+            setTimeout(function () {
+              result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 200);
+          }
+        }
+      });
+    });
+  })();
+</script>

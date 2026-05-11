@@ -8,24 +8,22 @@ const checkoutUrl = `https://pay.hotmart.com/${productId}?checkoutMode=2`;
 
 <div
   id="checkout-modal"
-  class="fixed inset-0 z-[100] hidden items-center justify-center bg-navy-900/80 backdrop-blur-sm p-2 sm:p-4"
+  class="fixed inset-0 z-[100] hidden items-center justify-center bg-navy-900/60 backdrop-blur-[2px] p-3 sm:p-6 md:p-10"
   aria-hidden="true"
   role="dialog"
 >
-  <div class="relative w-full max-w-3xl h-[95vh] sm:h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-3 bg-navy-900 text-white border-b border-navy-800">
+  <div class="relative w-full max-w-md sm:max-w-lg h-[85vh] sm:h-[80vh] max-h-[720px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+    <div class="flex items-center justify-between px-3 py-2 bg-navy-900 text-white border-b border-navy-800">
       <div class="flex items-center gap-2">
-        <span class="text-teal-400">🔒</span>
-        <span class="font-bold text-sm sm:text-base">Checkout seguro · Hotmart</span>
+        <span class="text-teal-400 text-sm">🔒</span>
+        <span class="font-bold text-xs sm:text-sm">Checkout seguro · Hotmart</span>
       </div>
       <button
         id="checkout-modal-close"
         aria-label="Fechar checkout"
-        class="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition text-white text-xl font-bold"
+        class="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition text-white text-lg font-bold leading-none"
       >×</button>
     </div>
-    <!-- Iframe -->
     <iframe
       id="checkout-iframe"
       src="about:blank"
@@ -55,7 +53,6 @@ const checkoutUrl = `https://pay.hotmart.com/${productId}?checkoutMode=2`;
       modal.classList.remove('flex');
       modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      // delay pra não interromper transição de iframe
       setTimeout(function () { iframe.setAttribute('src', 'about:blank'); }, 200);
     }
 
@@ -67,7 +64,6 @@ const checkoutUrl = `https://pay.hotmart.com/${productId}?checkoutMode=2`;
       if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
     });
 
-    // Intercepta todo clique em data-cta="checkout"
     document.querySelectorAll('[data-cta="checkout"]').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.preventDefault();

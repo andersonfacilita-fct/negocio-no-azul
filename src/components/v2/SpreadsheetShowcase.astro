@@ -1,0 +1,285 @@
+---
+// Mostra a planilha financeira do Negócio no Azul em tabs interativos.
+// Recria as 5 vistas reais que Anderson tem na planilha (HTML, não imagem,
+// pra ser leve + responsivo + sem hospedar PNG).
+---
+
+<section class="bg-gradient-to-b from-white via-navy-50 to-white py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-6xl px-5">
+    <!-- Header -->
+    <div class="text-center mb-10 sm:mb-12">
+      <div class="inline-block text-xs font-bold text-teal-600 uppercase tracking-widest mb-3">
+        Planilha financeira incluída
+      </div>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy-900 leading-tight mb-4">
+        A planilha que mostra <span class="text-teal-600">para onde vai cada real</span>
+      </h2>
+      <p class="text-base sm:text-lg text-navy-700 max-w-2xl mx-auto">
+        Não é "mais uma planilha". É a estrutura pronta que você abre, lança o que entra e o que sai, e em <strong class="text-navy-900">7 dias enxerga o lucro real do seu negócio</strong>.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="bg-white rounded-2xl shadow-2xl border-2 border-navy-100 overflow-hidden">
+      <div class="bg-navy-900 px-3 py-2 flex gap-1 overflow-x-auto sheet-tabs scrollbar-hide">
+        <button data-tab="entradas" class="sheet-tab active px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg whitespace-nowrap transition-all">📥 Entradas</button>
+        <button data-tab="saidas" class="sheet-tab px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg whitespace-nowrap transition-all">📤 Saídas</button>
+        <button data-tab="resumo" class="sheet-tab px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg whitespace-nowrap transition-all">📊 Resumo Diário</button>
+        <button data-tab="dre" class="sheet-tab px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg whitespace-nowrap transition-all">📄 DRE</button>
+        <button data-tab="resultado" class="sheet-tab px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg whitespace-nowrap transition-all">🎯 Resultado do Mês</button>
+      </div>
+
+      <!-- ENTRADAS -->
+      <div data-sheet="entradas" class="sheet-panel p-4 sm:p-8 bg-white">
+        <div class="rounded-xl overflow-hidden border border-navy-200 shadow-sm">
+          <div class="bg-navy-900 text-white text-center py-5">
+            <div class="inline-flex items-center gap-3 text-xl sm:text-2xl font-display font-extrabold">
+              <span class="text-2xl">📥</span> ENTRADAS DO MÊS
+            </div>
+          </div>
+          <div class="grid grid-cols-[1fr_auto] bg-white">
+            <div class="bg-teal-600 text-white px-5 py-3 font-bold uppercase text-xs sm:text-sm">Total de entradas do mês</div>
+            <div class="bg-teal-700 text-white px-5 py-3 font-extrabold text-base sm:text-lg whitespace-nowrap">R$ 2.800,00</div>
+          </div>
+          <p class="bg-white px-5 py-2 text-xs sm:text-sm italic text-navy-600">Lance cada venda ou recebimento em uma linha. Preencha os campos em amarelo.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm">
+              <thead class="bg-navy-900 text-white">
+                <tr>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Data</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Descrição</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Categoria</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider hidden sm:table-cell">Forma de pagamento</th>
+                  <th class="text-right px-3 py-2 font-bold uppercase tracking-wider">Valor (R$)</th>
+                </tr>
+              </thead>
+              <tbody class="bg-yellow-50/40">
+                <tr class="border-b border-navy-100"><td class="px-3 py-2">01/04/2026</td><td class="px-3 py-2">Motor de portão</td><td class="px-3 py-2 text-navy-600">Venda Produto</td><td class="px-3 py-2 hidden sm:table-cell">PIX</td><td class="px-3 py-2 text-right font-mono font-bold">R$ 900,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2">02/04/2026</td><td class="px-3 py-2">motor de portão industrial</td><td class="px-3 py-2 text-navy-600">Venda Produto</td><td class="px-3 py-2 hidden sm:table-cell">Crédito parcelado</td><td class="px-3 py-2 text-right font-mono font-bold">R$ 1.500,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2">02/04/2026</td><td class="px-3 py-2">instação de motor</td><td class="px-3 py-2 text-navy-600">Venda Serviço</td><td class="px-3 py-2 hidden sm:table-cell">Dinheiro</td><td class="px-3 py-2 text-right font-mono font-bold">R$ 400,00</td></tr>
+                <tr class="border-b border-dashed border-navy-100/50"><td colspan="5" class="px-3 py-3 text-center text-navy-300 italic text-xs">… preencha as próximas linhas conforme suas vendas …</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAÍDAS -->
+      <div data-sheet="saidas" class="sheet-panel hidden p-4 sm:p-8 bg-white">
+        <div class="rounded-xl overflow-hidden border border-navy-200 shadow-sm">
+          <div class="bg-navy-900 text-white text-center py-5">
+            <div class="inline-flex items-center gap-3 text-xl sm:text-2xl font-display font-extrabold">
+              <span class="text-2xl">📤</span> SAÍDAS VARIÁVEIS DO MÊS
+            </div>
+          </div>
+          <div class="grid grid-cols-[1fr_auto] bg-white">
+            <div class="bg-teal-600 text-white px-5 py-3 font-bold uppercase text-xs sm:text-sm">Total de saídas variáveis</div>
+            <div class="bg-red-600 text-white px-5 py-3 font-extrabold text-base sm:text-lg whitespace-nowrap">R$ 2.035,00</div>
+          </div>
+          <p class="bg-white px-5 py-2 text-xs sm:text-sm italic text-navy-600">Lance apenas despesas <strong>VARIÁVEIS</strong> (mudam todo mês). As FIXAS já estão na aba Configuração.</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm">
+              <thead class="bg-navy-900 text-white">
+                <tr>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Data</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Descrição</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider">Categoria</th>
+                  <th class="text-left px-3 py-2 font-bold uppercase tracking-wider hidden sm:table-cell">Forma</th>
+                  <th class="text-right px-3 py-2 font-bold uppercase tracking-wider">Valor</th>
+                </tr>
+              </thead>
+              <tbody class="bg-yellow-50/40">
+                <tr class="border-b border-navy-100"><td class="px-3 py-2">05/04/2026</td><td class="px-3 py-2">entrega motoboy</td><td class="px-3 py-2 text-navy-600">Frete/Logística</td><td class="px-3 py-2 hidden sm:table-cell">PIX</td><td class="px-3 py-2 text-right font-mono font-bold text-red-600">R$ 35,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2">10/04/2026</td><td class="px-3 py-2">compra de produtos</td><td class="px-3 py-2 text-navy-600">Mercadoria/Insumos</td><td class="px-3 py-2 hidden sm:table-cell">Dinheiro</td><td class="px-3 py-2 text-right font-mono font-bold text-red-600">R$ 2.000,00</td></tr>
+                <tr class="border-b border-dashed border-navy-100/50"><td colspan="5" class="px-3 py-3 text-center text-navy-300 italic text-xs">… cada despesa categorizada automaticamente …</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESUMO DIÁRIO -->
+      <div data-sheet="resumo" class="sheet-panel hidden p-4 sm:p-8 bg-white">
+        <div class="rounded-xl overflow-hidden border border-navy-200 shadow-sm">
+          <div class="bg-navy-900 text-white text-center py-5">
+            <div class="inline-flex items-center gap-3 text-xl sm:text-2xl font-display font-extrabold">
+              <span class="text-2xl">📊</span> RESUMO DIÁRIO
+            </div>
+            <p class="text-xs sm:text-sm text-navy-200 italic mt-1">Selecione mês/ano abaixo. Saldo de cada dia automático.</p>
+          </div>
+          <div class="bg-white px-4 sm:px-6 py-4 flex flex-wrap gap-4 sm:gap-6 items-center border-b border-navy-200">
+            <div><span class="text-xs text-navy-600">Mês de referência:</span> <span class="ml-2 inline-block bg-yellow-100 px-3 py-1 rounded font-bold text-navy-900">4</span></div>
+            <div><span class="text-xs text-navy-600">Ano:</span> <span class="ml-2 inline-block bg-yellow-100 px-3 py-1 rounded font-bold text-navy-900">2026</span></div>
+          </div>
+          <div class="grid grid-cols-3 text-center">
+            <div class="bg-green-600 text-white py-3 px-2"><div class="text-[10px] sm:text-xs font-bold uppercase">Entradas no mês</div><div class="text-base sm:text-xl font-extrabold mt-1">R$ 2.800,00</div></div>
+            <div class="bg-red-600 text-white py-3 px-2"><div class="text-[10px] sm:text-xs font-bold uppercase">Saídas variáveis</div><div class="text-base sm:text-xl font-extrabold mt-1">R$ 2.035,00</div></div>
+            <div class="bg-teal-700 text-white py-3 px-2"><div class="text-[10px] sm:text-xs font-bold uppercase">Saldo do mês</div><div class="text-base sm:text-xl font-extrabold mt-1">R$ 765,00</div></div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm">
+              <thead class="bg-navy-700 text-white">
+                <tr>
+                  <th class="text-left px-2 py-2 font-bold uppercase">Dia</th>
+                  <th class="text-left px-2 py-2 font-bold uppercase hidden sm:table-cell">Data</th>
+                  <th class="text-right px-2 py-2 font-bold uppercase">Entradas</th>
+                  <th class="text-right px-2 py-2 font-bold uppercase">Saídas</th>
+                  <th class="text-right px-2 py-2 font-bold uppercase">Saldo dia</th>
+                  <th class="text-right px-2 py-2 font-bold uppercase">Acumulado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-navy-100"><td class="px-2 py-1.5">1</td><td class="px-2 py-1.5 hidden sm:table-cell">01/04</td><td class="px-2 py-1.5 text-right font-mono text-green-600">R$ 900,00</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right font-mono text-green-600 font-bold">R$ 900,00</td><td class="px-2 py-1.5 text-right font-mono font-bold">R$ 900,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-2 py-1.5">2</td><td class="px-2 py-1.5 hidden sm:table-cell">02/04</td><td class="px-2 py-1.5 text-right font-mono text-green-600">R$ 1.900,00</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right font-mono text-green-600 font-bold">R$ 1.900,00</td><td class="px-2 py-1.5 text-right font-mono font-bold">R$ 2.800,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-2 py-1.5">3</td><td class="px-2 py-1.5 hidden sm:table-cell">03/04</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right font-mono">R$ 2.800,00</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-2 py-1.5">4</td><td class="px-2 py-1.5 hidden sm:table-cell">04/04</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right font-mono">R$ 2.800,00</td></tr>
+                <tr class="border-b border-navy-100 bg-red-50/50"><td class="px-2 py-1.5">5</td><td class="px-2 py-1.5 hidden sm:table-cell">05/04</td><td class="px-2 py-1.5 text-right text-navy-300">-</td><td class="px-2 py-1.5 text-right font-mono text-red-600">R$ 35,00</td><td class="px-2 py-1.5 text-right font-mono text-red-600 font-bold">-R$ 35,00</td><td class="px-2 py-1.5 text-right font-mono">R$ 2.765,00</td></tr>
+                <tr class="border-b border-dashed border-navy-100/50"><td colspan="6" class="px-2 py-2 text-center text-navy-300 italic text-xs">… dia a dia, automaticamente …</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DRE -->
+      <div data-sheet="dre" class="sheet-panel hidden p-4 sm:p-8 bg-white">
+        <div class="rounded-xl overflow-hidden border border-navy-200 shadow-sm">
+          <div class="bg-navy-900 text-white text-center py-5">
+            <div class="inline-flex items-center gap-3 text-xl sm:text-2xl font-display font-extrabold">
+              <span class="text-2xl">📄</span> DRE — DEMONSTRATIVO DE RESULTADO
+            </div>
+            <p class="text-xs sm:text-sm text-teal-300 italic mt-1">Facilita Distribuidora — 46113</p>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm">
+              <thead class="bg-navy-700 text-white">
+                <tr>
+                  <th class="text-left px-3 py-2 font-bold uppercase">Conta</th>
+                  <th class="text-right px-3 py-2 font-bold uppercase">Valor (R$)</th>
+                  <th class="text-right px-3 py-2 font-bold uppercase">% Receita</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-teal-100 border-b-2 border-teal-200"><td class="px-3 py-2 font-extrabold text-teal-900">(+) RECEITA BRUTA</td><td class="px-3 py-2 text-right font-extrabold text-teal-900">R$ 2.800,00</td><td class="px-3 py-2 text-right font-extrabold text-teal-900">100,0%</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-700">Venda Produto</td><td class="px-3 py-2 text-right font-mono">R$ 2.400,00</td><td class="px-3 py-2 text-right text-navy-600">85,7%</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-700">Venda Serviço</td><td class="px-3 py-2 text-right font-mono">R$ 400,00</td><td class="px-3 py-2 text-right text-navy-600">14,3%</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-400">Recebimento Cliente</td><td class="px-3 py-2 text-right text-navy-300">-</td><td class="px-3 py-2 text-right text-navy-300">-</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-400">Juros/Rendimentos</td><td class="px-3 py-2 text-right text-navy-300">-</td><td class="px-3 py-2 text-right text-navy-300">-</td></tr>
+                <tr class="border-b-2 border-navy-200"><td class="px-3 py-2 pl-8 text-navy-400">Outras Entradas</td><td class="px-3 py-2 text-right text-navy-300">-</td><td class="px-3 py-2 text-right text-navy-300">-</td></tr>
+                <tr class="bg-red-100 border-b-2 border-red-200"><td class="px-3 py-2 font-extrabold text-red-900">(−) CUSTOS E DESPESAS VARIÁVEIS</td><td class="px-3 py-2 text-right font-extrabold text-red-900">-R$ 2.035,00</td><td class="px-3 py-2 text-right font-extrabold text-red-900">72,7%</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-700">Mercadoria/Insumos</td><td class="px-3 py-2 text-right font-mono text-red-600">-R$ 2.000,00</td><td class="px-3 py-2 text-right text-navy-600">71,4%</td></tr>
+                <tr class="border-b border-navy-100"><td class="px-3 py-2 pl-8 text-navy-700">Frete/Logística</td><td class="px-3 py-2 text-right font-mono text-red-600">-R$ 35,00</td><td class="px-3 py-2 text-right text-navy-600">1,3%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="bg-navy-50 px-4 py-3 text-xs sm:text-sm text-center italic text-navy-700">
+            …continua com Custos Fixos, Resultado Operacional, Lucro Líquido e indicadores.
+          </p>
+        </div>
+      </div>
+
+      <!-- RESULTADO -->
+      <div data-sheet="resultado" class="sheet-panel hidden p-4 sm:p-8 bg-white">
+        <div class="rounded-xl overflow-hidden border border-navy-200 shadow-sm">
+          <div class="bg-navy-900 text-white text-center py-5">
+            <div class="inline-flex items-center gap-3 text-xl sm:text-2xl font-display font-extrabold">
+              <span class="text-2xl">🎯</span> RESULTADO DO MÊS
+            </div>
+            <p class="text-xs sm:text-sm text-teal-300 italic mt-1">Facilita Distribuidora — 46113</p>
+          </div>
+
+          <div class="bg-teal-600 text-white text-center px-5 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider">
+            Os 3 números que importam
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-px bg-navy-100">
+            <div class="bg-green-50 p-5 text-center">
+              <div class="bg-green-600 text-white py-2 mb-3 -mx-5 -mt-5 font-bold uppercase text-xs sm:text-sm">💵 Entrou no mês</div>
+              <div class="font-display text-2xl sm:text-4xl font-extrabold text-green-700">R$ 2.800,00</div>
+            </div>
+            <div class="bg-red-50 p-5 text-center">
+              <div class="bg-red-600 text-white py-2 mb-3 -mx-5 -mt-5 font-bold uppercase text-xs sm:text-sm">💸 Saiu no mês</div>
+              <div class="font-display text-2xl sm:text-4xl font-extrabold text-red-700">R$ 33.330,99</div>
+            </div>
+          </div>
+
+          <div class="bg-navy-900 text-white text-center px-5 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider">
+            ✅ Sobrou (lucro real do mês)
+          </div>
+          <div class="bg-red-50 p-6 text-center">
+            <div class="font-display text-3xl sm:text-5xl font-extrabold text-red-700">-R$ 30.530,99</div>
+            <div class="text-xs sm:text-sm text-navy-600 mt-2 italic">É esse número que te diz a verdade — não o faturamento.</div>
+          </div>
+
+          <div class="bg-teal-600 text-white text-center px-5 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider">
+            Indicadores
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-navy-100 text-center text-xs sm:text-sm">
+            <div class="bg-white p-3"><div class="text-navy-600 mb-1">Margem bruta</div><div class="font-bold text-navy-900">27,3%</div></div>
+            <div class="bg-white p-3"><div class="text-navy-600 mb-1">% custos variáveis</div><div class="font-bold text-navy-900">72,7%</div></div>
+            <div class="bg-white p-3"><div class="text-navy-600 mb-1">Ticket médio</div><div class="font-bold text-navy-900">R$ 933,33</div></div>
+            <div class="bg-white p-3"><div class="text-navy-600 mb-1">Vendas no mês</div><div class="font-bold text-navy-900">3</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legendas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-10">
+      <div class="bg-white rounded-xl p-5 border-2 border-navy-100 shadow-sm">
+        <div class="text-3xl mb-2">⚡</div>
+        <div class="font-display font-extrabold text-navy-900 mb-1">Você só lança</div>
+        <p class="text-sm text-navy-600">Entradas e saídas no dia que aconteceram. Tudo o que é cálculo, total, percentual — a planilha faz sozinha.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border-2 border-navy-100 shadow-sm">
+        <div class="text-3xl mb-2">🎯</div>
+        <div class="font-display font-extrabold text-navy-900 mb-1">Vê o lucro REAL</div>
+        <p class="text-sm text-navy-600">Não é faturamento. Não é "quanto entrou no caixa". É o que SOBRA no fim do mês depois de tudo pago.</p>
+      </div>
+      <div class="bg-white rounded-xl p-5 border-2 border-navy-100 shadow-sm">
+        <div class="text-3xl mb-2">📈</div>
+        <div class="font-display font-extrabold text-navy-900 mb-1">Decide com base em número</div>
+        <p class="text-sm text-navy-600">Quando comprar estoque, quando contratar, quando dar desconto, quando segurar caixa. Sem chutar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sheet-tab {
+    color: #94a3b8;
+    background: transparent;
+  }
+  .sheet-tab:hover {
+    color: white;
+    background: rgba(255,255,255,0.08);
+  }
+  .sheet-tab.active {
+    background: linear-gradient(to bottom right, #14b8a6, #0d9488);
+    color: white;
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  }
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('.sheet-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-tab');
+        document.querySelectorAll('.sheet-tab').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        document.querySelectorAll('.sheet-panel').forEach(function (p) {
+          if (p.getAttribute('data-sheet') === key) p.classList.remove('hidden');
+          else p.classList.add('hidden');
+        });
+      });
+    });
+  })();
+</script>

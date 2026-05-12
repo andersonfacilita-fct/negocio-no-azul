@@ -1,18 +1,35 @@
 ---
-// Landing V3 — Quiz-first funnel
+// Landing V3 — Quiz-first + landing Maxxima completa
 // Acesso: negocionoazul.facilitaportoes.shop/v3
-// Cada lead começa identificando o ramo/dor/faturamento. No fim recebe
-// diagnóstico personalizado + oferta. Personalização passa via UTM
-// pro checkout (Anderson consegue ver perfil dos compradores).
+// Fluxo: 5 perguntas → diagnóstico personalizado → landing completa (Maxxima UX)
+// Personalização passa via sck/xcod pro checkout Hotmart pra atribuição.
 
 import Layout from '../layouts/Layout.astro';
 import CheckoutModal from '../components/CheckoutModal.astro';
+import VideoShowcase from '../components/VideoShowcase.astro';
+import ProblemAgitation from '../components/ProblemAgitation.astro';
+import MethodAzul from '../components/MethodAzul.astro';
+import WhatsIncluded from '../components/WhatsIncluded.astro';
+import ForWho from '../components/ForWho.astro';
+import PriceOffer from '../components/PriceOffer.astro';
+import FAQ from '../components/FAQ.astro';
+import About from '../components/About.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import CaseStudyV2 from '../components/v2/CaseStudyV2.astro';
+import ScarcityBar from '../components/v2/ScarcityBar.astro';
 ---
 
 <Layout
   title="Quanto dinheiro está vazando do seu negócio? — Diagnóstico em 90 segundos"
   description="Responda 5 perguntas e descubra em 90 segundos quanto dinheiro está vazando do seu negócio agora — e como recuperar em 7 dias."
 >
+  <!-- Barra fixa de escassez (só aparece após o quiz, JS controla) -->
+  <div id="scarcity-wrapper" class="hidden">
+    <ScarcityBar />
+  </div>
+
   <main class="min-h-screen bg-gradient-to-br from-navy-50 via-white to-teal-50">
 
     <!-- ETAPA 0: HOOK + INICIAR -->
@@ -410,7 +427,7 @@ import CheckoutModal from '../components/CheckoutModal.astro';
             data-cta="checkout"
             class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-br from-teal-500 to-teal-700 hover:from-teal-400 hover:to-teal-600 text-white font-extrabold font-display text-base sm:text-xl uppercase tracking-wide px-6 py-5 sm:py-6 rounded-2xl shadow-2xl shadow-teal-500/30 hover:-translate-y-1 transition-all cursor-pointer"
           >
-            QUERO RESOLVER ISSO POR R$ 67
+            COMPRAR AGORA · R$ 67
             <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </button>
 
@@ -427,10 +444,33 @@ import CheckoutModal from '../components/CheckoutModal.astro';
             </p>
           </div>
         </div>
+
+        <!-- Indicador "continue lendo abaixo" -->
+        <div class="text-center mt-12 mb-4">
+          <p class="text-sm text-navy-500 mb-2">↓ Veja o que dizem quem já aplicou ↓</p>
+        </div>
       </div>
     </section>
+
+    <!-- LANDING COMPLETA — só aparece após o quiz (JS controla via #full-landing) -->
+    <div id="full-landing" class="hidden">
+      <VideoShowcase />
+      <ProblemAgitation />
+      <MethodAzul />
+      <WhatsIncluded />
+      <CaseStudyV2 />
+      <ForWho />
+      <PriceOffer />
+      <About />
+      <FAQ />
+      <FinalCTA />
+    </div>
   </main>
 
+  <div id="footer-wrapper" class="hidden">
+    <Footer />
+  </div>
+  <StickyMobileCTA />
   <CheckoutModal productId="I105499750V" />
 
   <script is:inline>
@@ -672,6 +712,14 @@ import CheckoutModal from '../components/CheckoutModal.astro';
             completed_at: new Date().toISOString()
           }));
         } catch (e) {}
+
+        // revela landing completa + barra escassez + footer (UX Maxxima: pós-resultado)
+        var scarcity = document.getElementById('scarcity-wrapper');
+        var fullLanding = document.getElementById('full-landing');
+        var footerWrap = document.getElementById('footer-wrapper');
+        if (scarcity) scarcity.classList.remove('hidden');
+        if (fullLanding) fullLanding.classList.remove('hidden');
+        if (footerWrap) footerWrap.classList.remove('hidden');
 
         show('step-result');
       }

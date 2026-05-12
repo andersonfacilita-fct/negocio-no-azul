@@ -435,7 +435,56 @@ import CheckoutModal from '../components/CheckoutModal.astro';
 
   <script is:inline>
     (function () {
+      var STORAGE_KEY = 'na_v3_quiz';
+      var SESSION_ID = (function () {
+        try {
+          var sid = sessionStorage.getItem('na_v3_sid');
+          if (!sid) {
+            sid = 'qz_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+            sessionStorage.setItem('na_v3_sid', sid);
+          }
+          return sid;
+        } catch (e) { return 'qz_' + Date.now(); }
+      })();
+
+      // restaura estado se já fez parte do quiz
       var answers = {};
+      try {
+        var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        if (saved && saved.session_id === SESSION_ID && saved.answers) {
+          answers = saved.answers;
+        }
+      } catch (e) {}
+
+      function persist() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            session_id: SESSION_ID,
+            answers: answers,
+            updated_at: new Date().toISOString()
+          }));
+        } catch (e) {}
+      }
+
+      // Track no Meta Pixel + UTMfy (analytics agregado)
+      function track(eventName, data) {
+        try {
+          if (window.fbq) window.fbq('trackCustom', eventName, data || {});
+        } catch (e) {}
+        try {
+          // log também via beacon pra debug (não falha se cors)
+          if (navigator.sendBeacon) {
+            var payload = JSON.stringify({
+              event: eventName,
+              session_id: SESSION_ID,
+              data: data || {},
+              ts: Date.now()
+            });
+            navigator.sendBeacon('https://painel.facilitaportoes.shop/api/quiz-tracker', payload);
+          }
+        } catch (e) {}
+      }
+
       var STEPS = ['step-0','step-1','step-2','step-3','step-4','step-5'];
 
       function show(id) {
@@ -460,7 +509,12 @@ import CheckoutModal from '../components/CheckoutModal.astro';
       // bindings
       document.querySelectorAll('[data-quiz-next]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          nextStep(btn.getAttribute('data-quiz-next'));
+          var next = btn.getAttribute('data-quiz-next');
+          if (next === '1') {
+            // Lead clicou em "Começar Diagnóstico"
+            track('QuizStarted', { session_id: SESSION_ID });
+          }
+          nextStep(next);
         });
       });
       document.querySelectorAll('[data-quiz-back]').forEach(function (btn) {
@@ -473,6 +527,9 @@ import CheckoutModal from '../components/CheckoutModal.astro';
           var q = btn.getAttribute('data-question');
           var v = btn.getAttribute('data-value');
           answers[q] = v;
+          persist();
+          // tracking de cada resposta — Anderson vê funil completo
+          track('QuizStep', { question: q, value: v, session_id: SESSION_ID });
           var next = btn.getAttribute('data-next');
           // micro-delay pra animação de feedback
           btn.classList.add('ring-4', 'ring-teal-400', 'bg-teal-100');
@@ -555,13 +612,65 @@ import CheckoutModal from '../components/CheckoutModal.astro';
           return '<li class="flex items-start gap-3"><span class="flex-shrink-0 w-7 h-7 rounded-full bg-gold-400 text-navy-900 font-extrabold text-sm flex items-center justify-center">' + (i+1) + '</span><span class="text-sm sm:text-base text-white leading-relaxed pt-0.5">' + a + '</span></li>';
         }).join('');
 
-        // adiciona UTMs do perfil no checkout URL (Anderson consegue ver qual perfil compra)
+        // adiciona UTMs Hotmart do perfil no checkout URL
+        // sck/xcod são tracking codes que Hotmart guarda no banco da venda
         var checkoutBtn = document.getElementById('quiz-checkout-btn');
-        var profile = (answers.ramo||'na') + '-' + (answers.faturamento||'na') + '-' + (answers.dor||'na');
+        var profile = (answers.ramo||'na') + '_' + (answers.faturamento||'na') + '_' + (answers.dor||'na') + '_' + (answers.urgencia||'na');
         try {
           checkoutBtn.setAttribute('data-quiz-profile', profile);
-          // CheckoutModal escuta [data-cta=checkout] e abre iframe com checkoutUrl base
-          // o offer + UTM ficam no checkoutUrl gerado pelo CheckoutModal
+          checkoutBtn.setAttribute('data-quiz-leak', String(leak));
+        } catch (e) {}
+
+        // dispara QuizCompleted com payload completo — Anderson vê tudo no Events Manager
+        // + Custom Audience por perfil + analytics próprio via webhook
+        track('QuizCompleted', {
+          session_id: SESSION_ID,
+          ramo: answers.ramo,
+          faturamento: answers.faturamento,
+          dor: answers.dor,
+          tentou: answers.tentou,
+          urgencia: answers.urgencia,
+          leak_estimate: leak,
+          leak_yearly: leakYearly,
+          profile: profile
+        });
+
+        // intercepta click no checkout pra adicionar UTMs Hotmart antes do modal abrir
+        if (checkoutBtn && !checkoutBtn._quizBound) {
+          checkoutBtn._quizBound = true;
+          checkoutBtn.addEventListener('click', function () {
+            track('QuizCheckoutClick', { profile: profile, leak: leak });
+            // injeta UTMs Hotmart no iframe que vai abrir
+            try {
+              var iframe = document.getElementById('checkout-iframe');
+              if (iframe) {
+                // observer: quando src mudar pro checkout, adiciona sck+xcod
+                var obs = new MutationObserver(function (muts) {
+                  muts.forEach(function (m) {
+                    if (m.attributeName === 'src') {
+                      var src = iframe.getAttribute('src');
+                      if (src && src.indexOf('pay.hotmart.com') !== -1 && src.indexOf('sck=') === -1) {
+                        var sep = src.indexOf('?') === -1 ? '?' : '&';
+                        iframe.setAttribute('src', src + sep + 'sck=' + encodeURIComponent(profile) + '&xcod=' + encodeURIComponent('quiz_' + profile));
+                      }
+                    }
+                  });
+                });
+                obs.observe(iframe, { attributes: true });
+              }
+            } catch (e) {}
+          }, true);
+        }
+
+        // marca como completo pra retomar
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            session_id: SESSION_ID,
+            answers: answers,
+            profile: profile,
+            leak_estimate: leak,
+            completed_at: new Date().toISOString()
+          }));
         } catch (e) {}
 
         show('step-result');

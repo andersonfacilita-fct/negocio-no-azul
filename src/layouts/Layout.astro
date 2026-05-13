@@ -6,8 +6,8 @@ export interface Props {
 }
 
 const {
-  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 67',
-  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 67.',
+  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 47',
+  description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 47.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
@@ -91,7 +91,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         content_category: 'Cartilha + Planilha',
         content_ids: ['I105499750V'],
         content_type: 'product',
-        value: 67.0,
+        value: 47.0,
         currency: 'BRL',
       });
 
@@ -119,7 +119,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
               content_name: 'Negócio no Azul',
               content_ids: ['I105499750V'],
               content_type: 'product',
-              value: 67.0,
+              value: 47.0,
               currency: 'BRL',
               num_items: 1,
             }, { eventID: eventID });
@@ -130,7 +130,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
                 var body = new URLSearchParams({
                   id: PIXEL_ID,
                   ev: 'InitiateCheckout',
-                  cd: JSON.stringify({ value: 67, currency: 'BRL', content_ids: ['I105499750V'] }),
+                  cd: JSON.stringify({ value: 47, currency: 'BRL', content_ids: ['I105499750V'] }),
                   eid: eventID,
                 });
                 navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());

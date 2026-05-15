@@ -11,7 +11,8 @@ const {
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
-const PIXEL_ID = '1008899568248219';
+const PIXEL_ID = '1008899568248219'; // V2 (rebuild 08/05 — sem vendas, mantido por compat)
+const PIXEL_ID_LEGACY = '1183885533721874'; // ANTIGO — com aprendizado das 5 vendas históricas (campanha NA V4 usa esse)
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
@@ -63,8 +64,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       rel="stylesheet"
     />
 
-    <!-- Meta Pixel -->
-    <script is:inline define:vars={{ PIXEL_ID }}>
+    <!-- Meta Pixel — DUAL (V2 novo + ANTIGO com aprendizado de 5 vendas históricas) -->
+    <script is:inline define:vars={{ PIXEL_ID, PIXEL_ID_LEGACY }}>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -82,10 +83,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         s.parentNode.insertBefore(t, s);
       })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
+      // Init dos 2 pixels (V2 novo + antigo com aprendizado de vendas)
       window.fbq('init', PIXEL_ID);
+      window.fbq('init', PIXEL_ID_LEGACY);
+
+      // PageView dispara automaticamente pros 2 pixels init-ados
       window.fbq('track', 'PageView');
 
       // ViewContent imediato (sem delay) — Maxxima Fase 1 precisa de sinal rápido
+      // Dispara automaticamente pros 2 pixels
       window.fbq('track', 'ViewContent', {
         content_name: 'Negócio no Azul',
         content_category: 'Cartilha + Planilha',
@@ -124,16 +130,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
               num_items: 1,
             }, { eventID: eventID });
 
-            // Fallback sendBeacon — garante envio mesmo se navegador for embora antes do XHR
+            // Fallback sendBeacon dispara pros 2 pixels (V2 + antigo)
             try {
               if (navigator.sendBeacon) {
-                var body = new URLSearchParams({
-                  id: PIXEL_ID,
-                  ev: 'InitiateCheckout',
-                  cd: JSON.stringify({ value: 47, currency: 'BRL', content_ids: ['I105499750V'] }),
-                  eid: eventID,
+                [PIXEL_ID, PIXEL_ID_LEGACY].forEach(function (pid) {
+                  var body = new URLSearchParams({
+                    id: pid,
+                    ev: 'InitiateCheckout',
+                    cd: JSON.stringify({ value: 47, currency: 'BRL', content_ids: ['I105499750V'] }),
+                    eid: eventID,
+                  });
+                  navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());
                 });
-                navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());
               }
             } catch (e) {}
           });
@@ -146,6 +154,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         width="1"
         style="display:none"
         src={`https://www.facebook.com/tr?id=${PIXEL_ID}&ev=PageView&noscript=1`}
+      />
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src={`https://www.facebook.com/tr?id=${PIXEL_ID_LEGACY}&ev=PageView&noscript=1`}
       />
     </noscript>
 

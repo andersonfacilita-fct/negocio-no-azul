@@ -26,17 +26,15 @@ const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2&off=9y7
   (function () {
     var el = document.getElementById('sticky-cta');
     if (!el) return;
+    // Aparece já no primeiro scroll (não espera 600px) — V4 fix conversão IC
     var shown = false;
-    function onScroll() {
-      var y = window.scrollY || window.pageYOffset;
-      if (!shown && y > 600) {
-        el.classList.remove('translate-y-full');
-        shown = true;
-      } else if (shown && y <= 600) {
-        el.classList.add('translate-y-full');
-        shown = false;
-      }
+    function show() {
+      if (shown) return;
+      el.classList.remove('translate-y-full');
+      shown = true;
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // Mostra após 1.2s OU no primeiro scroll, o que vier primeiro
+    setTimeout(show, 1200);
+    window.addEventListener('scroll', show, { passive: true, once: true });
   })();
 </script>

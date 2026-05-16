@@ -9,31 +9,46 @@ import CTAButton from './CTAButton.astro';
     <div class="absolute top-1/2 -left-24 h-96 w-96 rounded-full bg-gold-400/60 blur-3xl"></div>
   </div>
 
-  <div class="relative mx-auto max-w-6xl px-5 py-12 sm:py-16 lg:py-24">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+  <div class="relative mx-auto max-w-6xl px-5 py-8 sm:py-16 lg:py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
       <!-- Left: text -->
       <div class="text-center lg:text-left animate-fade-up">
-        <div class="inline-flex items-center gap-2 rounded-full bg-teal-500/15 border border-teal-400/30 px-4 py-1.5 text-xs sm:text-sm font-semibold text-teal-300 mb-5">
+        <div class="inline-flex items-center gap-2 rounded-full bg-gold-400/15 border border-gold-400/40 px-3 py-1 text-[11px] sm:text-xs font-bold text-gold-300 mb-4 uppercase tracking-widest">
           <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75 animate-ping"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-teal-400"></span>
+            <span class="absolute inline-flex h-full w-full rounded-full bg-gold-400 opacity-75 animate-ping"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-gold-400"></span>
           </span>
-          MÉTODO A.Z.U.L. - RESULTADOS EM 7 DIAS
+          Resultado em 7 dias
         </div>
 
-        <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.1] mb-5">
-          Seu negócio vende, mas o dinheiro <span class="text-gold-400">nunca sobra</span>?
+        <h1 class="font-display text-[26px] sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-[1.05] mb-4">
+          Vende bem, mas o dinheiro <span class="text-gold-400">vaza</span> e você não sabe por onde?
         </h1>
 
-        <p class="text-base sm:text-lg lg:text-xl text-navy-100 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-          Descubra em <strong class="text-teal-300">7 dias</strong> para onde o dinheiro está indo - e comece a <strong class="text-teal-300">LUCRAR</strong> com o que você já vende. Sem teoria. Sem planilha impossível.
+        <p class="text-sm sm:text-lg lg:text-xl text-navy-100 leading-relaxed mb-5 sm:mb-8 max-w-xl mx-auto lg:mx-0">
+          Em <strong class="text-teal-300">7 dias</strong> você descobre <strong class="text-teal-300">exatamente</strong> pra onde seu dinheiro está indo — e começa a sobrar <strong class="text-gold-400">sem precisar vender mais</strong>.
         </p>
 
-        <div class="flex flex-col sm:items-start items-stretch gap-4">
-          <CTAButton size="xl" />
-          <p class="text-sm text-navy-200 text-center sm:text-left">
-            <span class="line-through text-navy-300">De R$ 197</span> por apenas <strong class="text-gold-400">R$ 47</strong> à vista (ou 6x no cartão)
+        <div class="flex flex-col sm:items-start items-stretch gap-3">
+          <CTAButton size="xl" label="QUERO DESCOBRIR MEU VAZAMENTO" />
+          <p class="text-xs sm:text-sm text-navy-200 text-center sm:text-left">
+            Acesso imediato · <span class="line-through text-navy-300">De R$ 197</span> por apenas <strong class="text-gold-400">R$ 47</strong> (ou 6x no cartão) · Garantia 7 dias
           </p>
+        </div>
+
+        <!-- Prova social inline (mobile incluso) -->
+        <div class="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 text-xs sm:text-sm text-navy-100">
+          <div class="flex items-center gap-1.5">
+            <div class="flex -space-x-1.5">
+              <div class="h-6 w-6 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 border-2 border-navy-900 flex items-center justify-center text-[9px] font-bold text-white">CH</div>
+              <div class="h-6 w-6 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 border-2 border-navy-900 flex items-center justify-center text-[9px] font-bold text-white">MA</div>
+              <div class="h-6 w-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 border-2 border-navy-900 flex items-center justify-center text-[9px] font-bold text-navy-900">JR</div>
+            </div>
+            <strong class="text-white">+1.847</strong> já aplicaram
+          </div>
+          <div class="flex items-center gap-1 text-gold-400">
+            ★★★★★ <span class="text-navy-100">4.9/5</span>
+          </div>
         </div>
 
         <!-- Trust badges -->
@@ -53,8 +68,8 @@ import CTAButton from './CTAButton.astro';
         </div>
       </div>
 
-      <!-- Right: product mockup -->
-      <div class="relative animate-fade-up">
+      <!-- Right: product mockup (compacto no mobile pra não empurrar CTA do first view) -->
+      <div class="relative animate-fade-up order-first lg:order-last hidden sm:block">
         <div class="relative mx-auto max-w-md lg:max-w-none">
           <!-- Glow -->
           <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/30 to-gold-400/30 blur-3xl rounded-full"></div>

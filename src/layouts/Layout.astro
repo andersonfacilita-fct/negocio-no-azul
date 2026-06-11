@@ -6,7 +6,7 @@ export interface Props {
 }
 
 const {
-  title = 'Negócio no Azul - Do caos ao controle em 7 dias | R$ 47',
+  title = 'Protocolo do Negócio no Azul em 7 Dias | R$ 47',
   description = 'Descubra em 7 dias para onde o dinheiro do seu negócio está indo - e comece a LUCRAR com o que você já vende. Cartilha + Planilha + Guia por R$ 47.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
@@ -167,20 +167,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: 'Negócio no Azul',
+      name: 'Protocolo do Negócio no Azul em 7 Dias',
       description: 'Cartilha + Planilha + Guia para você sair do caos financeiro do seu negócio em 7 dias usando o método A.Z.U.L.',
       brand: { '@type': 'Brand', name: 'Anderson Cruz' },
       offers: {
         '@type': 'Offer',
-        price: '67.00',
+        price: '47.00',
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
         url: 'https://pay.hotmart.com/I105499750V?checkoutMode=2&off=9y7ezi2f',
-      },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '127',
       },
     })} />
 

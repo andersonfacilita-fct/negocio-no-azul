@@ -1,37 +1,488 @@
 ---
+// Estrutura "Página de Vendas 3x" (método Maxxima) — 14 blocos.
+// Botão de compra SÓ nos blocos 9 e 12. Bloco 2 (Depoimentos) removido: sem prova social real
+// (o método manda remover quando não há lastro). Sem números agregados/caso fictício (decisão 11/06).
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import VideoShowcase from '../components/VideoShowcase.astro';
-import ProblemAgitation from '../components/ProblemAgitation.astro';
-import MethodAzul from '../components/MethodAzul.astro';
-import WhatsIncluded from '../components/WhatsIncluded.astro';
-import CaseStudy from '../components/CaseStudy.astro';
-import ForWho from '../components/ForWho.astro';
-import PriceOffer from '../components/PriceOffer.astro';
-import FAQ from '../components/FAQ.astro';
-import About from '../components/About.astro';
-import FinalCTA from '../components/FinalCTA.astro';
-import Footer from '../components/Footer.astro';
-import StickyMobileCTA from '../components/StickyMobileCTA.astro';
+import BuyButton from '../components/BuyButton.astro';
+import Icon from '../components/Icon.astro';
+
+const PRECO = 'R$ 47';
+const ANCORA = 'R$ 197';
 ---
 
 <Layout
-  title="Negócio no Azul - Descubra o vazamento de dinheiro do seu negócio em 7 dias | R$ 47"
-  description="Mesmo vendendo bem, o dinheiro nunca sobra? Em 7 dias você descobre exatamente para onde está vazando - e começa a lucrar. Cartilha + Planilha + Guia por R$ 47."
+  title="Protocolo do Negócio no Azul em 7 Dias — Descubra pra onde seu dinheiro vaza | R$ 47"
+  description="Vende bem mas o dinheiro nunca sobra? Em 7 dias o método A.Z.U.L. mostra exatamente pra onde seu dinheiro vaza — e você começa a lucrar sem vender mais. Cartilha + Planilha + Guia por R$ 47."
 >
-  <main>
-    <Hero />
-    <VideoShowcase />
-    <ProblemAgitation />
-    <MethodAzul />
-    <WhatsIncluded />
-    <CaseStudy />
-    <ForWho />
-    <PriceOffer />
-    <FAQ />
-    <About />
-    <FinalCTA />
+  <main class="overflow-x-hidden">
+    <!-- ===================================================================== -->
+    <!-- BLOCO 1 · VENDER SOZINHO (Hero) — bater o olho e querer comprar        -->
+    <!-- ===================================================================== -->
+    <section class="relative gradient-navy text-white">
+      <div class="pointer-events-none absolute inset-0 opacity-25">
+        <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-teal-500 blur-3xl"></div>
+        <div class="absolute bottom-0 -left-24 h-80 w-80 rounded-full bg-gold-400/50 blur-3xl"></div>
+      </div>
+      <div class="relative mx-auto max-w-6xl px-5 pb-12 pt-8 sm:pt-12 lg:pb-20 lg:pt-16">
+        <div class="mb-5 flex justify-center px-2">
+          <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-center text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur sm:text-base">
+            <span class="relative flex h-2.5 w-2.5 flex-shrink-0">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold-400 opacity-75"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold-400"></span>
+            </span>
+            Vende bem, mas o dinheiro some?
+          </p>
+        </div>
+        <h1 class="mx-auto max-w-4xl text-center font-display text-[30px] font-extrabold leading-[1.06] sm:text-5xl lg:text-6xl">
+          Vende bem, mas o dinheiro <span class="text-gradient-teal">vaza</span><br class="hidden sm:block" /> e você não sabe por onde?
+        </h1>
+        <p class="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-navy-100 sm:text-xl">
+          Em <strong class="text-teal-300">7 dias</strong> você descobre <strong class="text-white">exatamente</strong> pra onde seu dinheiro está indo — e começa a sobrar dinheiro no fim do mês <strong class="text-gold-400">sem precisar vender mais</strong>. Sem planilha complicada, sem teoria de faculdade, sem virar economista.
+        </p>
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-navy-200 sm:text-sm">
+          <span class="inline-flex items-center gap-1.5"><Icon name="shield" class="h-4 w-4 text-teal-300" />Garantia de 7 dias</span>
+          <span class="inline-flex items-center gap-1.5"><Icon name="bolt" class="h-4 w-4 text-teal-300" />Acesso imediato</span>
+          <span class="inline-flex items-center gap-1.5"><Icon name="wallet" class="h-4 w-4 text-teal-300" />Pagamento único, sem mensalidade</span>
+        </div>
+
+        <!-- Mockup do produto (cartilha + planilha) — sem botão de compra no hero (regra Maxxima) -->
+        <div class="relative mx-auto mt-12 max-w-md sm:mt-14">
+          <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/25 to-gold-400/25 blur-3xl"></div>
+          <div class="relative flex items-end justify-center">
+            <!-- Capa cartilha -->
+            <div class="relative w-52 sm:w-64 aspect-[3/4] rounded-2xl bg-gradient-to-br from-navy-700 via-navy-800 to-navy-950 shadow-2xl ring-1 ring-teal-500/20 rotate-[-6deg] overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/10 via-transparent to-gold-400/10"></div>
+              <div class="relative flex h-full flex-col justify-between p-6 sm:p-8">
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-widest text-teal-300 sm:text-xs">Protocolo · Cartilha + Planilha + Guia</div>
+                  <div class="my-4 h-0.5 w-10 bg-gold-400"></div>
+                  <h3 class="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl">Negócio<br /><span class="text-gradient-teal">no Azul</span></h3>
+                  <p class="mt-2 text-xs font-bold uppercase tracking-wide text-gold-400 sm:text-sm">em 7 dias</p>
+                  <p class="mt-3 text-[11px] leading-relaxed text-navy-200 sm:text-sm">Do caos ao controle com o método A.Z.U.L.</p>
+                </div>
+                <div class="text-[11px] font-bold text-navy-200 sm:text-sm">por Anderson Cruz</div>
+              </div>
+            </div>
+            <!-- Card planilha -->
+            <div class="relative -ml-8 w-36 sm:w-44 aspect-[4/5] rounded-xl bg-white shadow-2xl rotate-[7deg] ring-2 ring-teal-500 overflow-hidden">
+              <div class="flex h-7 items-center gap-1.5 bg-teal-600 px-3">
+                <div class="h-2 w-2 rounded-full bg-white/70"></div>
+                <div class="h-2 w-2 rounded-full bg-white/50"></div>
+                <div class="ml-auto text-[9px] font-bold uppercase tracking-wide text-white">Planilha</div>
+              </div>
+              <div class="space-y-1 p-2.5">
+                {[...Array(5)].map((_, i) => (
+                  <div class="grid grid-cols-3 gap-1">
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : 'bg-navy-100'}`}></div>
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : 'bg-teal-200'}`}></div>
+                    <div class={`h-2 rounded ${i === 0 ? 'bg-navy-800' : i === 2 ? 'bg-gold-300' : 'bg-teal-400'}`}></div>
+                  </div>
+                ))}
+                <div class="mt-2 border-t border-navy-100 pt-2">
+                  <div class="text-[9px] font-bold uppercase text-teal-700">Lucro real</div>
+                  <div class="font-display text-base font-extrabold text-teal-600">+ no azul</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col items-center gap-1 text-navy-200">
+          <span class="text-xs font-semibold uppercase tracking-widest">Veja como funciona</span>
+          <svg class="h-6 w-6 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCO 2 · DEPOIMENTOS — removido: sem prova social real (decisão 11/06, espelho da vendedoria).
+         Método Maxxima manda omitir prova sem lastro (risco Hotmart/Procon). Recolocar quando houver caso real documentado. -->
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 3 · DOR LATENTE PRINCIPAL (ruminação) — gerar identificação      -->
+    <!-- ===================================================================== -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold leading-tight text-navy-900 sm:text-4xl">
+          O problema quase nunca é vender. <span class="text-red-600">É o dinheiro que some depois.</span>
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl text-center text-base text-navy-600 sm:text-lg">
+          Se um desses pensamentos passou pela sua cabeça esse mês, esta página é pra você.
+        </p>
+        <div class="mt-9 space-y-4">
+          {[
+            'Eu vendo bem, trabalho o mês inteiro, vejo Pix entrando, maquininha passando, cliente comprando… mas quando chega o fim do mês, parece que o dinheiro evaporou. Eu olho pra conta e penso: cadê o dinheiro que entrou aqui?',
+            'Eu misturo o dinheiro da empresa com o meu, tiro do caixa pra pagar coisa de casa, uso cartão pessoal pra resolver coisa do negócio e depois não sei mais o que é lucro, o que é dívida e o que é bagunça.',
+            'Eu pago fornecedor, imposto, aluguel, funcionário, contador… mas quando chega minha vez, eu fico com o resto. E o pior: às vezes nem resto tem.',
+            'Eu não sei se o preço que eu cobro dá lucro de verdade. Eu vendo no olho, copio concorrente, desconto pra não perder cliente e fico com medo de estar trabalhando muito pra vender no prejuízo.',
+            'Eu tenho vergonha de admitir, mas eu não sei exatamente como tá a saúde do meu negócio. Por fora parece que tá tudo andando. Por dentro, eu tô sempre apagando incêndio, pagando o que grita mais alto e torcendo pra fechar no azul.',
+          ].map((t) => (
+            <div class="flex items-start gap-2.5">
+              <div class="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy-50 text-navy-500"><Icon name="chat" class="h-4 w-4" /></div>
+              <div class="max-w-xl rounded-xl rounded-tl-sm bg-navy-50 px-4 py-2.5 text-navy-800 shadow-sm">{t}</div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {[
+            { n: '3 números', d: 'decidem se você lucra ou não: ponto de equilíbrio, pró-labore e maior ralo' },
+            { n: '5 min/dia', d: 'é tudo que separa o dono no controle do dono no escuro' },
+            { n: '7 dias', d: 'pra enxergar pra onde cada real do seu negócio está indo' },
+          ].map((s) => (
+            <div class="rounded-2xl bg-red-50 p-5 text-center ring-1 ring-red-100">
+              <div class="font-display text-2xl font-extrabold text-red-600 sm:text-3xl">{s.n}</div>
+              <div class="mt-1 text-sm text-red-900/70">{s.d}</div>
+            </div>
+          ))}
+        </div>
+        <p class="mx-auto mt-8 max-w-2xl text-center font-display text-xl font-extrabold text-navy-900 sm:text-2xl">
+          O pior não é perder um cliente. É ver o lucro vazar todo mês — <span class="text-red-600">sem nem perceber.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 4 · TRANSIÇÃO DA DOR PRA SOLUÇÃO — abrir a porta (método A.Z.U.L) -->
+    <!-- ===================================================================== -->
+    <section class="bg-gradient-to-b from-navy-50 via-teal-50/40 to-white py-14 sm:py-20">
+      <div class="mx-auto max-w-5xl px-5">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-teal-500/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-teal-700">A virada</span>
+          <h2 class="mt-4 font-display text-2xl font-extrabold leading-tight text-navy-900 sm:text-4xl">
+            E se em 7 dias você soubesse <span class="text-gradient-teal">exatamente pra onde vai cada real?</span>
+          </h2>
+          <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-navy-700 sm:text-lg">
+            Não é vender mais. É parar de perder o que você já ganha. O método <strong class="text-navy-900">A.Z.U.L.</strong> são 4 passos simples — linguagem de feira, não de faculdade — que você aplica no celular, 5 minutos por dia.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { letter: 'A', icon: 'doc', title: 'Anotar', sub: 'toda entrada e saída', desc: 'O que você não mede, você não controla. 5 minutos por dia — como escovar os dentes do seu negócio.' },
+            { letter: 'Z', icon: 'drop', title: 'Zerar ralos', sub: 'achar os desperdícios invisíveis', desc: 'Aqueles R$ 300, R$ 500, R$ 1.200 que somem todo mês sem você ver — descobertos e travados na raiz.' },
+            { letter: 'U', icon: 'scale', title: 'Unificar separando', sub: 'PF e PJ separados, pró-labore fixo', desc: 'Fim da bagunça: uma conta pra vida pessoal, outra pro negócio e um salário fixo pra você.' },
+            { letter: 'L', icon: 'coins', title: 'Lucrar com consciência', sub: 'lucro com destino', desc: 'Lucro não é sobra. É dinheiro com nome e direção: reserva, crescer, você. Você decide pra onde ele vai.' },
+          ].map((s) => (
+            <div class="relative overflow-hidden rounded-2xl border border-navy-100 bg-white p-6 shadow-sm">
+              <div class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-teal-400 to-teal-700 opacity-10"></div>
+              <div class="relative flex items-center gap-3">
+                <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 font-display text-2xl font-extrabold text-white shadow-md">{s.letter}</div>
+                <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-50 text-teal-600"><Icon name={s.icon} class="h-5 w-5" /></div>
+              </div>
+              <h3 class="mt-4 font-display text-lg font-extrabold text-navy-900">{s.title}</h3>
+              <p class="text-xs font-semibold uppercase tracking-wide text-teal-600">{s.sub}</p>
+              <p class="mt-2 text-sm leading-relaxed text-navy-700">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-9 text-center">
+          <p class="inline-flex items-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/15 px-5 py-3 font-display text-sm font-bold text-navy-900 sm:text-base">
+            <Icon name="check" class="h-5 w-5 text-gold-500" />
+            Em 7 dias você sabe seus 3 números: Ponto de Equilíbrio, Pró-labore ideal e Maior Ralo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 5 · AGORA VOCÊ VAI — benefícios na prática (4 a 6)               -->
+    <!-- ===================================================================== -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-4xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold text-navy-900 sm:text-4xl">Com o Protocolo Negócio no Azul, você vai:</h2>
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {[
+            { i: 'chart', t: 'Saber seu lucro real', d: 'Não o que entra no caixa — o que de fato sobra pra você no fim do mês.' },
+            { i: 'search', t: 'Achar pra onde o dinheiro vaza', d: 'Os ralos invisíveis que comem R$ 300, R$ 500, R$ 1.200 todo mês — e travar na raiz.' },
+            { i: 'scale', t: 'Separar você da empresa', d: 'Fim da mistura PF/PJ. Um salário fixo pra você e clareza no caixa do negócio.' },
+            { i: 'tag', t: 'Saber se seu preço está certo', d: 'Pare de vender no escuro: descubra se cada venda dá lucro ou prejuízo.' },
+            { i: 'target', t: 'Decidir com número, não no feeling', d: 'Ponto de equilíbrio na mão: você sabe quanto precisa vender pra não ficar no vermelho.' },
+            { i: 'coins', t: 'Fazer o dinheiro sobrar sem vender mais', d: 'Mesma venda, mais lucro no bolso — só organizando o que já existe.' },
+          ].map((c) => (
+            <div class="flex items-start gap-4 rounded-2xl bg-navy-50 p-5">
+              <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white text-teal-600 shadow-sm"><Icon name={c.i} class="h-6 w-6" /></div>
+              <div><div class="font-display text-lg font-extrabold text-navy-900">{c.t}</div><div class="mt-1 text-sm text-navy-600">{c.d}</div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 6 · TUDO QUE VOCÊ VAI RECEBER + BÔNUS                            -->
+    <!-- ===================================================================== -->
+    <section class="gradient-navy py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold sm:text-4xl">Tudo que você leva</h2>
+        <p class="mx-auto mt-3 max-w-xl text-center text-base text-navy-200 sm:text-lg">Um pacote completo pra sair do caos financeiro — sem você ter que virar economista.</p>
+        <div class="mx-auto mt-9 max-w-2xl space-y-3">
+          {[
+            { i: 'doc', t: 'Cartilha do método A.Z.U.L. (22 págs)', d: 'o método A.Z.U.L. completo, com plano de 7 dias passo a passo, em linguagem direta' },
+            { i: 'grid', t: 'Planilha Financeira automática (8 abas)', d: 'você só lança entrada e saída; ela faz DRE, diagnóstico, ponto de equilíbrio e alertas' },
+            { i: 'doc', t: 'Guia de Uso da planilha (14 págs)', d: 'aba por aba, com exemplos preenchidos — você não precisa saber Excel' },
+          ].map((it) => (
+            <div class="flex items-center gap-4 rounded-2xl bg-white/10 p-4 ring-1 ring-white/10">
+              <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-teal-500 text-white"><Icon name={it.i} class="h-5 w-5" /></span>
+              <div class="flex-1"><div class="font-bold">{it.t}</div><div class="text-sm text-navy-200">{it.d}</div></div>
+            </div>
+          ))}
+          <div class="pt-2 text-center text-xs font-bold uppercase tracking-widest text-gold-400">+ Bônus exclusivo</div>
+          <div class="flex items-center gap-4 rounded-2xl bg-gold-400/10 p-4 ring-1 ring-gold-400/25">
+            <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gold-400 text-navy-900"><Icon name="spark" class="h-5 w-5" /></span>
+            <div class="flex-1"><div class="font-bold">Bônus: Grupo VIP no WhatsApp</div><div class="text-sm text-navy-200">comunidade pra tirar dúvida sobre o método e trocar com outros donos — o link chega no seu e-mail</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 7 · PARA QUEM SERVE — "é pra mim"                                -->
+    <!-- ===================================================================== -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-5xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold text-navy-900 sm:text-4xl">Isso é pra você?</h2>
+        <div class="mt-9 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div class="rounded-2xl border-2 border-teal-500/30 bg-teal-50/60 p-6">
+            <div class="mb-4 flex items-center gap-2 font-display text-lg font-extrabold text-teal-800"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-teal-500 text-white"><Icon name="check" class="h-4 w-4" /></span>É pra você se…</div>
+            <ul class="space-y-2.5 text-navy-800">
+              {[
+                'Tem um pequeno negócio ou é autônomo/MEI e fatura de R$ 3 mil a R$ 100 mil/mês',
+                'Vende bem mas no fim do mês nunca sobra — e não sabe por quê',
+                'Mistura o dinheiro pessoal com o da empresa e quer separar de vez',
+                'Quer decidir com número, não no feeling',
+                'Tem 5 minutos por dia e não quer virar economista',
+              ].map((t) => (
+                <li class="flex items-start gap-2.5"><Icon name="check" class="mt-0.5 h-5 w-5 flex-shrink-0 text-teal-600" /><span>{t}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-2xl border-2 border-red-200 bg-red-50 p-6">
+            <div class="mb-4 flex items-center gap-2 font-display text-lg font-extrabold text-red-700"><span class="flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white"><Icon name="x" class="h-4 w-4" /></span>Não é pra você se…</div>
+            <ul class="space-y-2.5 text-red-900/80">
+              {[
+                'Procura fórmula mágica pra ficar rico sem mexer no que faz',
+                'Não topa anotar entrada e saída por alguns minutos no dia',
+                'Acha que controle financeiro é só pra empresa grande',
+                'Quer um contador pra terceirizar e nunca olhar os números',
+                'Não tem nenhuma entrada e saída de dinheiro pra organizar',
+              ].map((t) => (
+                <li class="flex items-start gap-2.5"><Icon name="x" class="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" /><span>{t}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 8 · ANCORAGEM COM PREÇO — quanto vale tudo isso                  -->
+    <!-- ===================================================================== -->
+    <section class="bg-gradient-to-b from-navy-50 via-teal-50/40 to-white py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-5">
+        <p class="text-center text-xs font-bold uppercase tracking-widest text-teal-700">Recapitulando, tudo que você recebe</p>
+        <div class="mt-6 rounded-3xl bg-white p-7 shadow-sm ring-1 ring-teal-500/10 sm:p-9">
+          <ul class="space-y-3">
+            {[
+              { t: 'Cartilha do método A.Z.U.L. (22 págs)', v: 'R$ 67' },
+              { t: 'Planilha Financeira automática (8 abas)', v: 'R$ 87' },
+              { t: 'Guia de Uso passo a passo (14 págs)', v: 'R$ 43' },
+            ].map((it) => (
+              <li class="flex items-center justify-between gap-3 border-b border-teal-500/10 pb-3 text-navy-900">
+                <span class="flex items-center gap-2.5"><Icon name="check" class="h-5 w-5 flex-shrink-0 text-teal-600" />{it.t}</span>
+                <span class="text-sm text-navy-400 line-through">{it.v}</span>
+              </li>
+            ))}
+            <li class="flex items-center justify-between gap-3 pb-1 text-navy-900">
+              <span class="flex items-center gap-2.5"><Icon name="spark" class="h-5 w-5 flex-shrink-0 text-gold-500" />Bônus: Grupo VIP no WhatsApp</span>
+              <span class="text-xs font-bold uppercase tracking-wide text-teal-600">Grátis</span>
+            </li>
+          </ul>
+          <p class="mt-6 text-center font-display text-xl font-extrabold text-navy-900 sm:text-2xl">
+            Tudo isso deveria custar <span class="text-red-600 line-through">{ANCORA}</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 9 · VALOR — BOTÃO DE COMPRA #1                                   -->
+    <!-- ===================================================================== -->
+    <section id="oferta" class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-2xl px-5">
+        <div class="text-center">
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-teal-700">Mas hoje, com tudo junto, por apenas</span>
+        </div>
+        <div class="relative mt-6 rounded-3xl border-4 border-gold-400 bg-gradient-to-br from-white to-teal-50/50 p-7 shadow-2xl sm:p-9">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-gold-400 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider text-navy-900 shadow-lg">Acesso imediato</div>
+          <div class="mb-6 mt-2 text-center">
+            <div class="text-sm text-navy-500">De <span class="line-through">{ANCORA}</span> por:</div>
+            <div class="mt-1 flex items-baseline justify-center gap-1">
+              <span class="font-display text-2xl font-bold text-teal-600 sm:text-3xl">R$</span>
+              <span class="font-display text-6xl font-extrabold leading-none text-teal-600 sm:text-7xl">47</span>
+            </div>
+            <div class="mt-2 text-base font-bold text-navy-600">à vista <span class="font-normal text-navy-400">ou em até</span> 6x no cartão</div>
+          </div>
+          <BuyButton label="QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato · Garantia de 7 dias" />
+          <div class="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold text-red-600"><Icon name="flame" class="h-4 w-4" />Preço de lançamento — pode subir a qualquer momento</div>
+        </div>
+        <!-- Formas de pagamento -->
+        <div class="mt-6 text-center">
+          <div class="mb-2 text-xs font-bold uppercase tracking-widest text-navy-400">Formas de pagamento</div>
+          <div class="flex flex-wrap items-center justify-center gap-2">
+            <span class="rounded-lg border border-navy-100 bg-navy-50 px-3 py-1.5 text-xs font-bold text-navy-800">Pix</span>
+            <span class="rounded-lg border border-navy-100 bg-navy-50 px-3 py-1.5 text-xs font-bold text-navy-800">Cartão (até 6x)</span>
+            <span class="rounded-lg border border-navy-100 bg-navy-50 px-3 py-1.5 text-xs font-bold text-navy-800">Boleto</span>
+            <span class="rounded-lg border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-700">🔒 Checkout Hotmart</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 10 · CONVERSA SÉRIA — contra a parede, 2 opções                  -->
+    <!-- ===================================================================== -->
+    <section class="bg-navy-900 py-14 text-white sm:py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold sm:text-4xl">Agora você tem duas opções</h2>
+        <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl bg-red-900/30 p-6 ring-1 ring-white/10">
+            <div class="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-red-300"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white"><Icon name="x" class="h-4 w-4" /></span>Opção 1</div>
+            <p class="text-navy-100">Continuar como está: trabalhando muito, vendendo bem e sem saber pra onde o dinheiro vai. Tirando do caixa no escuro e torcendo pra dar certo no fim do mês — vendo o lucro vazar sem perceber.</p>
+          </div>
+          <div class="rounded-2xl bg-teal-500/15 p-6 ring-1 ring-teal-400/30">
+            <div class="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-teal-300"><span class="flex h-6 w-6 items-center justify-center rounded-full bg-teal-500 text-white"><Icon name="check" class="h-4 w-4" /></span>Opção 2</div>
+            <p class="text-white">Investir <strong>{PRECO}</strong> e, em 7 dias, enxergar exatamente pra onde seu dinheiro vai — começando a fazer sobrar no fim do mês sem precisar vender mais.</p>
+          </div>
+        </div>
+        <p class="mx-auto mt-7 max-w-xl text-center text-base text-navy-100 sm:text-lg">
+          Você sabe qual é a mais inteligente. <strong class="text-white">A opção 2 custa menos que um almoço.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 11 · AUTORIDADE — achou a pessoa certa, confiança                -->
+    <!-- ===================================================================== -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <div class="grid grid-cols-1 items-center gap-8 sm:grid-cols-[auto_1fr]">
+          <div class="mx-auto sm:mx-0">
+            <div class="relative">
+              <div class="absolute inset-0 rounded-full bg-gradient-to-br from-teal-500 to-gold-400 opacity-40 blur-xl"></div>
+              <div class="relative flex h-28 w-28 items-center justify-center rounded-full border-4 border-white bg-gradient-to-br from-navy-900 to-navy-700 shadow-xl sm:h-36 sm:w-36">
+                <span class="font-display text-4xl font-extrabold text-gold-400 sm:text-5xl">AC</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center sm:text-left">
+            <span class="inline-block rounded-full bg-teal-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-teal-700">Quem está por trás</span>
+            <h2 class="mt-3 font-display text-2xl font-extrabold leading-tight text-navy-900 sm:text-4xl">
+              Não é teoria de faculdade. São <span class="text-gradient-teal">20+ anos virando negócio real.</span>
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-navy-700 sm:text-lg">
+              Sou o <strong class="text-navy-900">Anderson Cruz</strong>. Já vi de tudo: cara faturando R$ 80 mil e no sufoco, e dono faturando R$ 8 mil com sobra no fim do mês. A diferença nunca foi quanto vendem — foi o que fazem com o dinheiro depois. Criei o método A.Z.U.L. pra ser o passo a passo que eu uso na prática, sem economês.
+            </p>
+          </div>
+        </div>
+        <div class="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            { i: 'check', t: 'Sem economês' },
+            { i: 'wallet', t: 'Pagamento único' },
+            { i: 'clock', t: '5 min por dia' },
+            { i: 'shield', t: 'Garantia de 7 dias' },
+          ].map((b) => (
+            <div class="rounded-2xl bg-navy-50 p-4 text-center ring-1 ring-black/5">
+              <div class="mx-auto flex h-10 w-10 items-center justify-center text-teal-600"><Icon name={b.i} class="h-6 w-6" /></div>
+              <div class="mt-1.5 text-sm font-bold text-navy-900">{b.t}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 12 · VALOR — BOTÃO DE COMPRA #2                                  -->
+    <!-- ===================================================================== -->
+    <section class="gradient-navy py-16 text-white sm:py-24">
+      <div class="mx-auto max-w-2xl px-5 text-center">
+        <h2 class="font-display text-3xl font-extrabold leading-tight sm:text-5xl">Pare de perder dinheiro. <span class="text-gold-400">Coloque seu negócio no azul.</span></h2>
+        <p class="mx-auto mt-5 max-w-xl text-base text-navy-100 sm:text-lg">
+          Em 7 dias você enxerga pra onde seu dinheiro vaza e começa a fazer sobrar — sem vender mais. De <span class="line-through">{ANCORA}</span> por <strong class="text-gold-400">{PRECO}</strong> à vista (ou 6x no cartão). Acesso imediato, 100% online.
+        </p>
+        <div class="mx-auto mt-9 max-w-md"><BuyButton label="QUERO MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato · Garantia de 7 dias" /></div>
+        <p class="mx-auto mt-8 max-w-xl rounded-2xl bg-white/5 p-4 text-sm text-navy-200 ring-1 ring-white/10">
+          <strong class="text-white">P.S.</strong> Cada mês sem controle é mais um mês de lucro vazando sem você ver. Por {PRECO}, você começa hoje e em 7 dias já sabe exatamente onde seu dinheiro está indo.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 13 · FAQ DOS DESCONFIADOS — matar o medo de pagar                -->
+    <!-- ===================================================================== -->
+    <section class="bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-3xl px-5">
+        <h2 class="text-center font-display text-2xl font-extrabold text-navy-900 sm:text-3xl">Perguntas frequentes</h2>
+        <div class="mt-8 space-y-3">
+          {[
+            { q: 'Funciona pra qualquer tipo de negócio?', a: 'Sim. O método A.Z.U.L. serve pra padaria, loja, salão, oficina, prestador de serviço, delivery, loja online e MEI em geral. Se você tem entrada e saída de dinheiro, funciona — a linguagem é totalmente prática, não importa o ramo.' },
+            { q: 'Preciso saber Excel?', a: 'Não. A planilha já vem 100% pronta — você só digita entrada e saída, o resto é automático. E você recebe um guia de 14 páginas explicando aba por aba, com exemplos preenchidos. Se já abriu um aplicativo no celular, consegue usar.' },
+            { q: 'Funciona no celular?', a: 'Funciona. A cartilha e o guia são PDFs que você lê no celular tranquilamente. A planilha abre no Google Sheets (grátis, direto do celular) ou no Excel. A maioria usa direto pelo celular.' },
+            { q: 'Quanto tempo leva pra ver resultado?', a: 'Em 7 dias você já tem seus 3 números na mão (Ponto de Equilíbrio, Pró-labore ideal e Maior Ralo). O impacto financeiro real aparece conforme você corta desperdícios e separa as contas nas semanas seguintes.' },
+            { q: 'Como recebo o material?', a: 'Direto no seu e-mail, logo após a confirmação do pagamento (em geral, menos de 2 minutos). Você recebe acesso à cartilha, à planilha e ao guia pra baixar quando quiser.' },
+            { q: 'Tem mensalidade?', a: 'Não. É pagamento único. Você paga R$ 47 uma vez só (à vista ou em até 6x no cartão) e o material fica seu pra sempre.' },
+            { q: 'E se eu não gostar?', a: 'Você tem 7 dias de garantia total. É só pedir o reembolso nesse período pela Hotmart e devolvemos 100% do valor — sem pergunta, sem burocracia. O risco é todo nosso.' },
+          ].map((f) => (
+            <details class="group rounded-2xl border border-teal-500/15 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-3 font-bold text-navy-900">{f.q}<span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-teal-500/15 text-teal-700 transition-transform group-open:rotate-45">+</span></summary>
+              <p class="mt-3 text-navy-600">{f.a}</p>
+            </details>
+          ))}
+        </div>
+        <div class="mx-auto mt-8 flex max-w-2xl items-center gap-4 rounded-2xl border-2 border-teal-500/30 bg-teal-50/60 p-5 sm:p-6">
+          <span class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-teal-500 text-white"><Icon name="shield" class="h-7 w-7" /></span>
+          <div>
+            <p class="font-display text-base font-extrabold text-teal-800 sm:text-lg">Garantia incondicional de 7 dias</p>
+            <p class="mt-0.5 text-sm text-navy-600">Comprou e não curtiu? Pede o reembolso em até 7 dias e devolvemos 100% do valor. Você só tem a ganhar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BLOCO 14 · RODAPÉ — reforçar confiança                                 -->
+    <!-- ===================================================================== -->
+    <footer class="bg-navy-950 py-10 text-center text-sm text-navy-300">
+      <div class="mx-auto max-w-3xl px-5">
+        <div class="mb-4 font-display text-base font-bold text-white">
+          Protocolo do <span class="text-teal-400">Negócio no Azul</span> em 7 Dias
+        </div>
+        <p class="mx-auto max-w-2xl text-xs leading-relaxed text-navy-400">
+          O Protocolo do Negócio no Azul em 7 Dias é um material educativo independente (cartilha, planilha e guia). <strong>Não</strong> é afiliado, patrocinado ou endossado pela Meta/Facebook. A compra não garante nenhum resultado específico — os resultados variam conforme a aplicação de cada pessoa.
+        </p>
+        <p class="mt-4 text-xs text-navy-500">© 2026 · Anderson Cruz · Todos os direitos reservados</p>
+      </div>
+    </footer>
+
+    <!-- STICKY CTA (mobile) — aparece só depois do bloco 9 (oferta) -->
+    <div id="sticky-cta" class="fixed inset-x-0 bottom-0 z-50 translate-y-full border-t border-teal-500/30 bg-white/95 p-3 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.25)] backdrop-blur transition-transform duration-300 sm:hidden">
+      <div class="flex items-center gap-3">
+        <div class="flex-shrink-0">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-navy-400">De <span class="line-through">{ANCORA}</span></div>
+          <div class="font-display text-xl font-extrabold leading-none text-teal-600">{PRECO}</div>
+        </div>
+        <a href="#oferta" class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 px-4 py-3.5 font-display text-sm font-extrabold uppercase tracking-wide text-white">
+          Quero meu negócio no azul<Icon name="arrow" class="h-5 w-5" />
+        </a>
+      </div>
+    </div>
+    <script is:inline>
+      (function () {
+        var sticky = document.getElementById('sticky-cta'), offer = document.getElementById('oferta');
+        if (!sticky || !offer) return;
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting || e.boundingClientRect.top < 0) sticky.classList.remove('translate-y-full'); });
+        }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(offer);
+      })();
+    </script>
   </main>
-  <Footer />
-  <StickyMobileCTA />
 </Layout>

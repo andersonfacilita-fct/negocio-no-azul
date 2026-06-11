@@ -1,0 +1,44 @@
+---
+// Set de ícones SVG (outline, herda currentColor) pra substituir emojis.
+// Espelha o Icon.astro da vendedoria + ícones próprios do tema financeiro (A.Z.U.L.).
+export interface Props {
+  name: string;
+  class?: string;
+}
+const { name, class: className = 'h-6 w-6' } = Astro.props;
+
+// paths em viewBox 24x24, stroke currentColor
+const PATHS: Record<string, string> = {
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  bolt: '<path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>',
+  spark: '<path d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9l4.4-1.4L12 3z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"/>',
+  chat: '<path d="M21 11.5a8.5 8.5 0 01-12.4 7.5L4 20l1-4.6A8.5 8.5 0 1121 11.5z"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 014.9.7c0 1.7-2.4 2.3-2.4 3.8"/><path d="M12 17.5h.01"/>',
+  calendar: '<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 10h16"/><path d="M9.5 15l1.5 1.5 3-3"/>',
+  flame: '<path d="M12 3c1 3-2 4-2 7a2 2 0 104 0c0 0 2 2 2 4a4 4 0 11-8 0c0-4 4-6 4-11z"/>',
+  bell: '<path d="M6 9a6 6 0 1112 0c0 5 2 6 2 6H4s2-1 2-6z"/><path d="M10 20a2 2 0 004 0"/>',
+  smile: '<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4 4 0 007 0"/><path d="M9 9.6h.01M15 9.6h.01"/>',
+  check: '<path d="M5 13l4 4L19 7"/>',
+  shield: '<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+  verified: '<path d="M12 3l2 2 2.8-.6.6 2.8 2 2-1.4 2.5L21 16l-2.4 1.3-.6 2.8L15 19.6 12 21l-3-1.4-2.8.6-.6-2.8L3 16l1.4-2.3L3 11.2l2-2L5.6 6.4 8.4 7 12 3z"/><path d="M9 12l2 2 4-4"/>',
+  wallet: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M16 12h.01M3 9h13a2 2 0 012 2"/>',
+  lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>',
+  x: '<path d="M6 6l12 12M18 6L6 18"/>',
+  store: '<path d="M4 9l1-4h14l1 4M5 9v10a1 1 0 001 1h12a1 1 0 001-1V9M4 9h16"/><path d="M9 20v-5h6v5"/>',
+  arrow: '<path d="M13 7l5 5-5 5M18 12H6"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',
+  // ---- tema financeiro (Negócio no Azul) ----
+  coins: '<ellipse cx="9" cy="6" rx="6" ry="2.6"/><path d="M3 6v4c0 1.4 2.7 2.6 6 2.6s6-1.2 6-2.6V6"/><path d="M3 10v4c0 1.4 2.7 2.6 6 2.6"/><ellipse cx="15" cy="14" rx="6" ry="2.6"/><path d="M9 14v4c0 1.4 2.7 2.6 6 2.6s6-1.2 6-2.6v-4"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  chart: '<path d="M4 4v16h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/>',
+  scale: '<path d="M12 3v18M6 21h12"/><path d="M12 6l-6 1 6-1 6 1-6-1z"/><path d="M6 7l-3 6a3 3 0 006 0L6 7zM18 7l-3 6a3 3 0 006 0l-3-6z"/>',
+  target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>',
+  tag: '<path d="M3 11.5l8-8a2 2 0 012.8 0l6.7 6.7a2 2 0 010 2.8l-8 8z"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor" stroke="none"/>',
+  drop: '<path d="M12 3s6.5 7.2 6.5 11.5a6.5 6.5 0 01-13 0C5.5 10.2 12 3 12 3z"/>',
+  doc: '<path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16h6"/>',
+  grid: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M4 14h16M9 4v16M14 4v16"/>',
+  rocket: '<path d="M5 15c-1 1-1 4-1 4s3 0 4-1m6.5-9.5a6 6 0 01-7 7L5 13l1.5-3 6-6c2-2 5-2 6.5-1.5C19.5 5 19 8 17 10z"/><circle cx="14.5" cy="9.5" r="1.2"/>',
+};
+const inner = PATHS[name] || '';
+---
+<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={inner}></svg>

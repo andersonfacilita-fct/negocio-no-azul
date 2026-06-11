@@ -1,0 +1,67 @@
+---
+// Botão de compra "3x" (padrão Maxxima/vendedoria) — usado SÓ nos blocos 9 e 12.
+// Mantém o data-cta="checkout" pro tracking do Layout (Pixel InitiateCheckout + sendBeacon + UTMify).
+export interface Props {
+  label?: string;
+  sub?: string;
+  size?: 'lg' | 'xl';
+  fullWidth?: boolean;
+  className?: string;
+}
+
+const {
+  label = 'QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 47',
+  sub = '',
+  size = 'xl',
+  fullWidth = true,
+  className = '',
+} = Astro.props;
+
+// Checkout Hotmart — produto I105499750V (cupom off=9y7ezi2f leva o preço pra R$ 47)
+const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2&off=9y7ezi2f';
+
+// Separa a ação do preço pra o preço nunca quebrar sozinho
+const [actionRaw, priceRaw] = label.split('·');
+const action = (actionRaw || label).trim();
+const price = priceRaw ? priceRaw.trim() : '';
+
+const pad = {
+  lg: 'px-5 py-3.5',
+  xl: 'px-6 py-4 sm:px-8 sm:py-5',
+};
+const actionSize = {
+  lg: 'text-sm sm:text-base',
+  xl: 'text-base sm:text-lg lg:text-xl',
+};
+---
+
+<div class={`flex flex-col items-center gap-2 ${fullWidth ? 'w-full' : ''} ${className}`}>
+  <a
+    href={CHECKOUT_URL}
+    data-cta="checkout"
+    class={`group inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 font-extrabold font-display uppercase tracking-wide text-white btn-glow transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 ${pad[size]} ${fullWidth ? 'w-full' : ''}`}
+  >
+    <span class="flex min-w-0 flex-col items-center text-center leading-tight">
+      <span class={`${actionSize[size]} text-balance`}>{action}</span>
+      {price && <span class="mt-0.5 whitespace-nowrap text-sm font-bold tracking-normal text-white/95 sm:text-base">{price}</span>}
+    </span>
+    <svg class="hidden h-5 w-5 flex-shrink-0 transition-transform group-hover:translate-x-1 sm:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+    </svg>
+  </a>
+  {sub && <p class="mt-1 text-center text-xs font-semibold text-navy-500 sm:text-sm">{sub}</p>}
+  <div class="mt-0.5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] font-medium text-navy-400 sm:text-xs">
+    <span class="inline-flex items-center gap-1.5">
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+      Compra segura
+    </span>
+    <span class="inline-flex items-center gap-1.5">
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg>
+      Garantia de 7 dias
+    </span>
+    <span class="inline-flex items-center gap-1.5">
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+      Acesso imediato
+    </span>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://negocionoazul.com.br',
+  site: 'https://negocionoazul.facilitaportoes.shop',
   integrations: [tailwind()],
   output: 'static',
   compressHTML: true,

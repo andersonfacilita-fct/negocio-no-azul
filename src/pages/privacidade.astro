@@ -1,0 +1,123 @@
+---
+// Política de Privacidade — exigida pela Meta para colocar o app em modo Live
+// e pela LGPD. Sem e-mail/contato direto (regra das páginas): direitos exercidos
+// pelo canal de compra (Hotmart).
+import Layout from '../layouts/Layout.astro';
+
+const ATUALIZADO = '12 de junho de 2026';
+
+const secoes = [
+  {
+    t: '1. Quem somos',
+    p: [
+      'Esta Política de Privacidade descreve como tratamos os dados dos visitantes e compradores do <strong>Protocolo do Negócio no Azul em 7 Dias</strong>, um material educativo digital (cartilha, planilha e guia) de autoria de Anderson Cruz, sob a marca Empreendedores do Futuro.',
+      'O produto é comercializado e entregue pela plataforma <strong>Hotmart</strong>, que atua como processadora de pagamento e responsável pela entrega do material e pelo suporte ao comprador.',
+    ],
+  },
+  {
+    t: '2. Quais dados coletamos',
+    list: [
+      '<strong>Dados de navegação:</strong> páginas visitadas, tempo de permanência, origem do acesso, tipo de dispositivo e navegador, coletados por cookies e tecnologias semelhantes.',
+      '<strong>Identificadores de marketing:</strong> dados associados ao Meta Pixel (Facebook/Instagram) e parâmetros de campanha (UTMs), usados para medir e otimizar anúncios.',
+      '<strong>Dados de compra:</strong> nome, e-mail e dados de pagamento fornecidos diretamente à Hotmart no momento da compra. Esses dados são tratados pela Hotmart conforme a política de privacidade dela.',
+    ],
+  },
+  {
+    t: '3. Como usamos os dados',
+    list: [
+      'Entregar o produto adquirido e dar acesso ao material;',
+      'Medir o desempenho da página e das campanhas de anúncios;',
+      'Exibir e otimizar anúncios em plataformas como Facebook e Instagram, inclusive remarketing;',
+      'Cumprir obrigações legais e prevenir fraudes.',
+    ],
+  },
+  {
+    t: '4. Cookies, Pixel e ferramentas de terceiros',
+    p: [
+      'Utilizamos cookies e os seguintes serviços de terceiros, cada um com sua própria política de privacidade:',
+    ],
+    list: [
+      '<strong>Meta Pixel (Meta Platforms)</strong> — medição e otimização de anúncios no Facebook e Instagram;',
+      '<strong>UTMify</strong> — atribuição de origem de vendas via parâmetros de campanha;',
+      '<strong>Hotmart</strong> — checkout, pagamento, entrega e suporte do produto.',
+    ],
+    after:
+      'Você pode bloquear ou apagar cookies nas configurações do seu navegador. Isso pode afetar a experiência de navegação, mas não impede a compra.',
+  },
+  {
+    t: '5. Compartilhamento',
+    p: [
+      'Não vendemos seus dados. O compartilhamento ocorre apenas com as plataformas necessárias para operar (Meta, Hotmart e UTMify, citadas acima) e quando exigido por lei ou autoridade competente.',
+    ],
+  },
+  {
+    t: '6. Seus direitos (LGPD)',
+    p: [
+      'Nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode solicitar: confirmação da existência de tratamento, acesso, correção, anonimização, portabilidade e exclusão dos seus dados, além da revogação do consentimento.',
+      'Como a compra e o cadastro de dados pessoais são feitos na <strong>plataforma Hotmart</strong>, as solicitações relativas aos seus dados de compra devem ser feitas pelo mesmo canal em que você realizou a aquisição, pela central de ajuda da Hotmart (help.hotmart.com).',
+    ],
+  },
+  {
+    t: '7. Segurança e retenção',
+    p: [
+      'Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados. Os dados são mantidos apenas pelo tempo necessário às finalidades descritas ou pelo prazo exigido por lei.',
+    ],
+  },
+  {
+    t: '8. Isenção',
+    p: [
+      'Este produto e esta página <strong>não são</strong> afiliados, patrocinados nem endossados pela Meta Platforms (Facebook/Instagram). Todas as marcas citadas pertencem aos seus respectivos titulares.',
+    ],
+  },
+  {
+    t: '9. Alterações',
+    p: [
+      'Esta política pode ser atualizada a qualquer momento. A data da última atualização é indicada no topo desta página.',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Política de Privacidade — Protocolo do Negócio no Azul"
+  description="Política de Privacidade do Protocolo do Negócio no Azul em 7 Dias: como tratamos cookies, Meta Pixel, dados de compra (Hotmart) e seus direitos sob a LGPD."
+>
+  <main class="bg-white">
+    <section class="gradient-navy py-12 text-white sm:py-16">
+      <div class="mx-auto max-w-3xl px-5">
+        <a href="/" class="inline-flex items-center gap-1.5 text-sm font-semibold text-teal-300 hover:text-teal-200">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          Voltar para a página
+        </a>
+        <h1 class="mt-4 font-display text-3xl font-extrabold sm:text-4xl">Política de Privacidade</h1>
+        <p class="mt-2 text-sm text-navy-200">Última atualização: {ATUALIZADO}</p>
+      </div>
+    </section>
+
+    <section class="py-12 sm:py-16">
+      <div class="mx-auto max-w-3xl space-y-8 px-5">
+        {secoes.map((s) => (
+          <div>
+            <h2 class="font-display text-lg font-extrabold text-navy-900 sm:text-xl">{s.t}</h2>
+            {s.p && s.p.map((par) => <p class="mt-3 leading-relaxed text-navy-700" set:html={par} />)}
+            {s.list && (
+              <ul class="mt-3 space-y-2">
+                {s.list.map((li) => (
+                  <li class="flex items-start gap-2.5 text-navy-700">
+                    <span class="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-teal-500"></span>
+                    <span set:html={li} />
+                  </li>
+                ))}
+              </ul>
+            )}
+            {s.after && <p class="mt-3 leading-relaxed text-navy-700" set:html={s.after} />}
+          </div>
+        ))}
+
+        <div class="border-t border-navy-100 pt-6 text-sm text-navy-500">
+          © 2026 · Empreendedores do Futuro · Protocolo do Negócio no Azul em 7 Dias
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -40,7 +40,6 @@ const ANCORA = 'R$ 197';
           Em <strong class="text-teal-300">7 dias</strong> você descobre <strong class="text-white">exatamente</strong> pra onde seu dinheiro está indo — e começa a sobrar dinheiro no fim do mês <strong class="text-gold-400">sem precisar vender mais</strong>. Sem planilha complicada, sem teoria de faculdade, sem virar economista.
         </p>
         <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-navy-200 sm:text-sm">
-          <span class="inline-flex items-center gap-1.5"><Icon name="shield" class="h-4 w-4 text-teal-300" />Garantia de 7 dias</span>
           <span class="inline-flex items-center gap-1.5"><Icon name="bolt" class="h-4 w-4 text-teal-300" />Acesso imediato</span>
           <span class="inline-flex items-center gap-1.5"><Icon name="wallet" class="h-4 w-4 text-teal-300" />Pagamento único, sem mensalidade</span>
         </div>
@@ -138,7 +137,7 @@ const ANCORA = 'R$ 197';
         <div class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {[
             { n: '3 números', d: 'decidem se você lucra ou não: ponto de equilíbrio, pró-labore e maior ralo' },
-            { n: '15 min/dia', d: 'é tudo que separa o dono no controle do dono no escuro' },
+            { n: '15 min/dia', d: 'é tudo que separa o dono no controle, do dono no escuro' },
             { n: '7 dias', d: 'pra enxergar pra onde cada real do seu negócio está indo' },
           ].map((s) => (
             <div class="rounded-2xl bg-red-50 p-5 text-center ring-1 ring-red-100">
@@ -173,7 +172,7 @@ const ANCORA = 'R$ 197';
             { letter: 'A', icon: 'doc', title: 'Anotar', sub: 'toda entrada e saída', desc: 'O que você não mede, você não controla. 15 minutos por dia — como escovar os dentes do seu negócio.' },
             { letter: 'Z', icon: 'drop', title: 'Zerar ralos', sub: 'achar os desperdícios invisíveis', desc: 'Aqueles R$ 300, R$ 500, R$ 1.200 que somem todo mês sem você ver — descobertos e travados na raiz.' },
             { letter: 'U', icon: 'scale', title: 'Unificar separando', sub: 'PF e PJ separados, pró-labore fixo', desc: 'Fim da bagunça: uma conta pra vida pessoal, outra pro negócio e um salário fixo pra você.' },
-            { letter: 'L', icon: 'coins', title: 'Lucrar com consciência', sub: 'lucro com destino', desc: 'Lucro não é sobra. É dinheiro com nome e direção: reserva, crescer, você. Você decide pra onde ele vai.' },
+            { letter: 'L', icon: 'coins', title: 'Lucrar com consciência', sub: 'lucro com destino', desc: 'Lucro não é o que sobra sem querer. É dinheiro com destino certo: uma parte pra reserva, uma pra crescer e uma pra você — você decide quanto vai pra cada uma.' },
           ].map((s) => (
             <div class="relative overflow-hidden rounded-2xl border border-navy-100 bg-white p-6 shadow-sm">
               <div class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-teal-400 to-teal-700 opacity-10"></div>
@@ -242,7 +241,7 @@ const ANCORA = 'R$ 197';
           <div class="pt-2 text-center text-xs font-bold uppercase tracking-widest text-gold-400">+ Bônus exclusivo</div>
           <div class="flex items-center gap-4 rounded-2xl bg-gold-400/10 p-4 ring-1 ring-gold-400/25">
             <span class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gold-400 text-navy-900"><Icon name="spark" class="h-5 w-5" /></span>
-            <div class="flex-1"><div class="font-bold">Bônus: Grupo VIP no WhatsApp</div><div class="text-sm text-navy-200">comunidade pra tirar dúvida sobre o protocolo e trocar com outros donos — o link chega no seu e-mail</div></div>
+            <div class="flex-1"><div class="font-bold">Bônus: Grupo VIP no WhatsApp</div><div class="text-sm text-navy-200">comunidade pra tirar dúvida sobre o protocolo e trocar ideia com outros empreendedores — o link chega no seu e-mail</div></div>
           </div>
         </div>
       </div>
@@ -260,7 +259,7 @@ const ANCORA = 'R$ 197';
             <ul class="space-y-2.5 text-navy-800">
               {[
                 'Tem um pequeno negócio ou é autônomo/MEI e fatura de R$ 3 mil a R$ 100 mil/mês',
-                'Vende bem mas no fim do mês nunca sobra — e não sabe por quê',
+                'Vende bem mas no fim do mês nunca sobra dinheiro — e não sabe por quê',
                 'Mistura o dinheiro pessoal com o da empresa e quer separar de vez',
                 'Quer decidir com número, não no feeling',
                 'Tem 15 minutos por dia e não quer virar economista',
@@ -335,7 +334,7 @@ const ANCORA = 'R$ 197';
             </div>
             <div class="mt-2 text-base font-bold text-navy-600">à vista <span class="font-normal text-navy-400">ou em até</span> 6x no cartão</div>
           </div>
-          <BuyButton label="QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato · Garantia de 7 dias" />
+          <BuyButton label="QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato" />
           <div class="mt-5 flex items-center justify-center gap-2 text-center text-xs font-semibold text-red-600"><Icon name="flame" class="h-4 w-4" />Preço de lançamento — pode subir a qualquer momento</div>
         </div>
         <!-- Formas de pagamento -->
@@ -390,7 +389,7 @@ const ANCORA = 'R$ 197';
           <div class="text-center sm:text-left">
             <span class="inline-block rounded-full bg-teal-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-teal-700">Quem está por trás</span>
             <h2 class="mt-3 font-display text-2xl font-extrabold leading-tight text-navy-900 sm:text-4xl">
-              Não é teoria de faculdade. São <span class="text-gradient-teal">20+ anos virando negócio real.</span>
+              Não é teoria de faculdade. São <span class="text-gradient-teal">20+ anos criando empresas de verdade.</span>
             </h2>
             <p class="mt-4 text-base leading-relaxed text-navy-700 sm:text-lg">
               Sou o <strong class="text-navy-900">Anderson Cruz</strong>. Já vi de tudo: cara faturando R$ 80 mil e no sufoco, e dono faturando R$ 8 mil com sobra no fim do mês. A diferença nunca foi quanto vendem — foi o que fazem com o dinheiro depois. Criei o nosso protocolo pra ser o passo a passo que eu uso na prática, sem economês.
@@ -399,10 +398,10 @@ const ANCORA = 'R$ 197';
         </div>
         <div class="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
-            { i: 'check', t: 'Sem economês' },
+            { i: 'check', t: 'Linguagem simples' },
             { i: 'wallet', t: 'Pagamento único' },
             { i: 'clock', t: '15 min por dia' },
-            { i: 'shield', t: 'Garantia de 7 dias' },
+            { i: 'bolt', t: 'Acesso imediato' },
           ].map((b) => (
             <div class="rounded-2xl bg-navy-50 p-4 text-center ring-1 ring-black/5">
               <div class="mx-auto flex h-10 w-10 items-center justify-center text-teal-600"><Icon name={b.i} class="h-6 w-6" /></div>
@@ -422,7 +421,7 @@ const ANCORA = 'R$ 197';
         <p class="mx-auto mt-5 max-w-xl text-base text-navy-100 sm:text-lg">
           Em 7 dias você enxerga pra onde seu dinheiro vaza e começa a fazer sobrar — sem vender mais. De <span class="line-through">{ANCORA}</span> por <strong class="text-gold-400">{PRECO}</strong> à vista (ou 6x no cartão). Acesso imediato, 100% online.
         </p>
-        <div class="mx-auto mt-9 max-w-md"><BuyButton label="QUERO MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato · Garantia de 7 dias" /></div>
+        <div class="mx-auto mt-9 max-w-md"><BuyButton label="QUERO MEU NEGÓCIO NO AZUL · R$ 47" sub="Pagamento único · Acesso imediato" /></div>
         <p class="mx-auto mt-8 max-w-xl rounded-2xl bg-white/5 p-4 text-sm text-navy-200 ring-1 ring-white/10">
           <strong class="text-white">P.S.</strong> Cada mês sem controle é mais um mês de lucro vazando sem você ver. Por {PRECO}, você começa hoje e em 7 dias já sabe exatamente onde seu dinheiro está indo.
         </p>
@@ -443,7 +442,6 @@ const ANCORA = 'R$ 197';
             { q: 'Quanto tempo leva pra ver resultado?', a: 'Em 7 dias você já tem seus 3 números na mão (Ponto de Equilíbrio, Pró-labore ideal e Maior Ralo). O impacto financeiro real aparece conforme você corta desperdícios e separa as contas nas semanas seguintes.' },
             { q: 'Como recebo o material?', a: 'Direto no seu e-mail, logo após a confirmação do pagamento (em geral, menos de 2 minutos). Você recebe acesso à cartilha, à planilha e ao guia pra baixar quando quiser.' },
             { q: 'Tem mensalidade?', a: 'Não. É pagamento único. Você paga R$ 47 uma vez só (à vista ou em até 6x no cartão) e o material fica seu pra sempre.' },
-            { q: 'E se eu não gostar?', a: 'Você tem 7 dias de garantia total. É só pedir o reembolso nesse período pela Hotmart e devolvemos 100% do valor — sem pergunta, sem burocracia. O risco é todo nosso.' },
           ].map((f) => (
             <details class="group rounded-2xl border border-teal-500/15 bg-white p-5 [&_summary::-webkit-details-marker]:hidden">
               <summary class="flex cursor-pointer items-center justify-between gap-3 font-bold text-navy-900">{f.q}<span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-teal-500/15 text-teal-700 transition-transform group-open:rotate-45">+</span></summary>
@@ -451,13 +449,7 @@ const ANCORA = 'R$ 197';
             </details>
           ))}
         </div>
-        <div class="mx-auto mt-8 flex max-w-2xl items-center gap-4 rounded-2xl border-2 border-teal-500/30 bg-teal-50/60 p-5 sm:p-6">
-          <span class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-teal-500 text-white"><Icon name="shield" class="h-7 w-7" /></span>
-          <div>
-            <p class="font-display text-base font-extrabold text-teal-800 sm:text-lg">Garantia incondicional de 7 dias</p>
-            <p class="mt-0.5 text-sm text-navy-600">Comprou e não curtiu? Pede o reembolso em até 7 dias e devolvemos 100% do valor. Você só tem a ganhar.</p>
-          </div>
-        </div>
+        <!-- bloco de reembolso removido a pedido (12/06) -->
       </div>
     </section>
 
@@ -477,26 +469,6 @@ const ANCORA = 'R$ 197';
       </div>
     </footer>
 
-    <!-- STICKY CTA (mobile) — aparece só depois do bloco 9 (oferta) -->
-    <div id="sticky-cta" class="fixed inset-x-0 bottom-0 z-50 translate-y-full border-t border-teal-500/30 bg-white/95 p-3 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.25)] backdrop-blur transition-transform duration-300 sm:hidden">
-      <div class="flex items-center gap-3">
-        <div class="flex-shrink-0">
-          <div class="text-[10px] font-bold uppercase tracking-wider text-navy-400">De <span class="line-through">{ANCORA}</span></div>
-          <div class="font-display text-xl font-extrabold leading-none text-teal-600">{PRECO}</div>
-        </div>
-        <a href="#oferta" class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 px-4 py-3.5 font-display text-sm font-extrabold uppercase tracking-wide text-white">
-          Quero meu negócio no azul<Icon name="arrow" class="h-5 w-5" />
-        </a>
-      </div>
-    </div>
-    <script is:inline>
-      (function () {
-        var sticky = document.getElementById('sticky-cta'), offer = document.getElementById('oferta');
-        if (!sticky || !offer) return;
-        new IntersectionObserver(function (es) {
-          es.forEach(function (e) { if (e.isIntersecting || e.boundingClientRect.top < 0) sticky.classList.remove('translate-y-full'); });
-        }, { threshold: 0, rootMargin: '0px 0px -40% 0px' }).observe(offer);
-      })();
-    </script>
+    <!-- Sticky CTA removido a pedido (12/06): botão de compra só nos blocos 9 e 12, sem seguir o scroll -->
   </main>
 </Layout>

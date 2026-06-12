@@ -45,6 +45,21 @@ const ANCORA = 'R$ 197';
           <span class="inline-flex items-center gap-1.5"><Icon name="wallet" class="h-4 w-4 text-teal-300" />Pagamento único, sem mensalidade</span>
         </div>
 
+        <!-- Banner comparativo (dor): vende bem o mês inteiro, mas no fim não sobra nada — arte fornecida -->
+        <figure class="relative mx-auto mt-10 max-w-4xl sm:mt-12">
+          <div class="pointer-events-none absolute -inset-2 bg-gradient-to-tr from-teal-500/20 to-gold-400/20 blur-2xl"></div>
+          <img
+            src="/hero-vende-bem.webp"
+            alt="De um lado, o dono feliz contando o dinheiro que entra o mês inteiro; do outro, o mesmo dono de cabeça baixa com a conta zerada e os boletos acumulados no fim do mês. O problema não é vender pouco — é não enxergar para onde o dinheiro está vazando."
+            width="1672"
+            height="941"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+            class="relative w-full rounded-2xl shadow-2xl ring-1 ring-white/10"
+          />
+        </figure>
+
         <!-- Mockup do produto (cartilha + planilha) — sem botão de compra no hero (regra Maxxima) -->
         <div class="relative mx-auto mt-12 max-w-md sm:mt-14">
           <div class="absolute inset-0 bg-gradient-to-tr from-teal-500/25 to-gold-400/25 blur-3xl"></div>
@@ -108,20 +123,18 @@ const ANCORA = 'R$ 197';
         <p class="mx-auto mt-3 max-w-xl text-center text-base text-navy-600 sm:text-lg">
           Se um desses pensamentos passou pela sua cabeça esse mês, esta página é pra você.
         </p>
-        <div class="mt-9 space-y-4">
-          {[
-            'Eu vendo bem, trabalho o mês inteiro, vejo Pix entrando, maquininha passando, cliente comprando… mas quando chega o fim do mês, parece que o dinheiro evaporou. Eu olho pra conta e penso: cadê o dinheiro que entrou aqui?',
-            'Eu misturo o dinheiro da empresa com o meu, tiro do caixa pra pagar coisa de casa, uso cartão pessoal pra resolver coisa do negócio e depois não sei mais o que é lucro, o que é dívida e o que é bagunça.',
-            'Eu pago fornecedor, imposto, aluguel, funcionário, contador… mas quando chega minha vez, eu fico com o resto. E o pior: às vezes nem resto tem.',
-            'Eu não sei se o preço que eu cobro dá lucro de verdade. Eu vendo no olho, copio concorrente, desconto pra não perder cliente e fico com medo de estar trabalhando muito pra vender no prejuízo.',
-            'Eu tenho vergonha de admitir, mas eu não sei exatamente como tá a saúde do meu negócio. Por fora parece que tá tudo andando. Por dentro, eu tô sempre apagando incêndio, pagando o que grita mais alto e torcendo pra fechar no azul.',
-          ].map((t) => (
-            <div class="flex items-start gap-2.5">
-              <div class="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-navy-50 text-navy-500"><Icon name="chat" class="h-4 w-4" /></div>
-              <div class="max-w-xl rounded-xl rounded-tl-sm bg-navy-50 px-4 py-2.5 text-navy-800 shadow-sm">{t}</div>
-            </div>
-          ))}
-        </div>
+        <!-- Arte: empreendedora cercada dos pensamentos da dor — substitui a antiga lista de balões em texto (mesmo conteúdo, mais visual) -->
+        <figure class="mx-auto mt-9 max-w-3xl">
+          <img
+            src="/problema-pensamentos.webp"
+            alt="Empreendedora pensativa na mesa, cercada de balões de pensamento: 'entra Pix e passa maquininha, mas no fim do mês o dinheiro evapora'; 'misturo meu dinheiro com o da empresa e já não sei o que é lucro, dívida ou bagunça'; 'pago fornecedor, imposto, aluguel e funcionário e quando chega minha vez não sobra nada'; 'não sei se meu preço dá lucro, tenho medo de estar vendendo no prejuízo'; 'por fora parece tudo bem, por dentro vivo apagando incêndio e torcendo pra fechar no azul'."
+            width="1448"
+            height="1086"
+            loading="lazy"
+            decoding="async"
+            class="w-full rounded-2xl shadow-sm ring-1 ring-navy-100"
+          />
+        </figure>
         <div class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {[
             { n: '3 números', d: 'decidem se você lucra ou não: ponto de equilíbrio, pró-labore e maior ralo' },

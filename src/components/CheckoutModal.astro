@@ -3,7 +3,7 @@ export interface Props {
   productId?: string;
 }
 const { productId = 'I105499750V' } = Astro.props;
-const checkoutUrl = `https://pay.hotmart.com/${productId}?checkoutMode=2&off=9y7ezi2f`;
+const checkoutUrl = `https://pay.hotmart.com/${productId}?checkoutMode=2`;
 ---
 
 <div

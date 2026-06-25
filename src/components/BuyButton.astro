@@ -10,15 +10,15 @@ export interface Props {
 }
 
 const {
-  label = 'QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 47',
+  label = 'QUERO COLOCAR MEU NEGÓCIO NO AZUL · R$ 97',
   sub = '',
   size = 'xl',
   fullWidth = true,
   className = '',
 } = Astro.props;
 
-// Checkout Hotmart — produto I105499750V (cupom off=9y7ezi2f leva o preço pra R$ 47)
-const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2&off=9y7ezi2f';
+// Checkout Hotmart — produto I105499750V (preço cheio R$ 97 — cupom removido)
+const CHECKOUT_URL = 'https://pay.hotmart.com/I105499750V?checkoutMode=2';
 
 // Separa a ação do preço pra o preço nunca quebrar sozinho
 const [actionRaw, priceRaw] = label.split('·');

@@ -324,30 +324,39 @@ const ANCORA = 'R$ 197';
     <!-- ===================================================================== -->
     <!-- BLOCO 8b · PROVA SOCIAL — resultados reais de quem aplicou             -->
     <!-- ===================================================================== -->
-    <section class="bg-gradient-to-b from-teal-50/40 to-white py-14 sm:py-20">
+    <section class="gradient-navy py-16 text-white sm:py-24">
       <div class="mx-auto max-w-5xl px-5">
-        <p class="text-center text-xs font-bold uppercase tracking-widest text-teal-700">Quem aplicou, viu a diferença</p>
-        <h2 class="mt-2 text-center font-display text-2xl font-extrabold text-navy-900 sm:text-4xl">Resultado de verdade, em poucos dias</h2>
-        <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div class="text-center">
+          <span class="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold-300 ring-1 ring-gold-400/30">Histórias reais</span>
+          <div class="mt-5 flex items-center justify-center gap-3">
+            <span class="text-3xl leading-none tracking-widest text-gold-400 sm:text-4xl">★★★★★</span>
+            <span class="font-display text-3xl font-extrabold sm:text-4xl">5,0</span>
+          </div>
+          <h2 class="mt-3 font-display text-3xl font-extrabold sm:text-5xl">Quem aplicou, viu a diferença</h2>
+          <p class="mx-auto mt-3 max-w-xl text-navy-100">Donos de pequenos negócios que organizaram o financeiro com o protocolo — e viram o resultado em poucos dias.</p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {[
-            { nome: 'Rafael', area: 'Barbeiro', ini: 'R', cor: 'bg-teal-600', txt: 'Logo nos primeiros 15 dias já vi meu resultado melhorar. Descobri uns gastos que comiam meu lucro sem eu perceber. Hoje sei certinho quanto entra e quanto sobra.' },
-            { nome: 'Luciane', area: 'Salão de beleza', ini: 'L', cor: 'bg-navy-700', txt: 'Apliquei certinho como o passo a passo ensina e em 7 dias já comecei a ver diferença. Entendi os números do meu salão e parei de misturar o meu dinheiro com o do caixa.' },
-            { nome: 'Paulo Roberto', area: 'Academia', ini: 'P', cor: 'bg-gold-500', txt: 'Reestruturei a academia inteira com o planejamento. Hoje fecho o mês com lucro de verdade, não mais no escuro. A virada foi enxergar pra onde o dinheiro ia.' },
+            { nome: 'Rafael', area: 'Barbeiro', ini: 'R', cor: 'bg-teal-600', foto: '', txt: 'Logo nos primeiros 15 dias já vi meu resultado melhorar. Descobri uns gastos que comiam meu lucro sem eu perceber. Hoje sei certinho quanto entra e quanto sobra.' },
+            { nome: 'Luciane', area: 'Salão de beleza', ini: 'L', cor: 'bg-navy-700', foto: '', txt: 'Apliquei certinho como o passo a passo ensina e em 7 dias já comecei a ver diferença. Entendi os números do meu salão e parei de misturar o meu dinheiro com o do caixa.' },
+            { nome: 'Paulo Roberto', area: 'Academia', ini: 'P', cor: 'bg-gold-500', foto: '', txt: 'Reestruturei a academia inteira com o planejamento. Hoje fecho o mês com lucro de verdade, não mais no escuro. A virada foi enxergar pra onde o dinheiro ia.' },
           ].map((d) => (
-            <figure class="flex flex-col rounded-2xl border border-teal-500/15 bg-white p-6 shadow-sm">
-              <div class="mb-3 text-lg leading-none tracking-widest text-gold-400">★★★★★</div>
+            <figure class="flex flex-col rounded-3xl bg-white p-7 text-navy-900 shadow-2xl ring-1 ring-gold-400/20">
+              <div class="mb-3 text-xl leading-none tracking-widest text-gold-400">★★★★★</div>
               <blockquote class="flex-1 text-navy-800">“{d.txt}”</blockquote>
-              <figcaption class="mt-5 flex items-center gap-3">
-                <span class={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full ${d.cor} font-display text-lg font-extrabold text-white`}>{d.ini}</span>
+              <figcaption class="mt-6 flex items-center gap-3 border-t border-navy-100 pt-5">
+                <span class={`flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full ring-2 ring-white shadow-md ${d.foto ? 'bg-navy-100' : d.cor} font-display text-xl font-extrabold text-white`}>
+                  {d.foto ? <img src={d.foto} alt={`Foto de ${d.nome}`} width="56" height="56" class="h-full w-full object-cover" /> : d.ini}
+                </span>
                 <span>
-                  <span class="block font-display font-extrabold text-navy-900">{d.nome}</span>
-                  <span class="block text-sm text-navy-500">{d.area}</span>
+                  <span class="block font-display text-lg font-extrabold text-navy-900">{d.nome}</span>
+                  <span class="block text-sm font-semibold text-teal-600">{d.area}</span>
                 </span>
               </figcaption>
             </figure>
           ))}
         </div>
-        <p class="mt-7 flex items-center justify-center gap-2 text-center text-sm font-semibold text-navy-500"><Icon name="verified" class="h-5 w-5 flex-shrink-0 text-teal-600" />Depoimentos reais de quem usou o protocolo</p>
+        <p class="mt-9 flex items-center justify-center gap-2 text-center text-sm font-semibold text-navy-200"><Icon name="verified" class="h-5 w-5 flex-shrink-0 text-gold-400" />Depoimentos reais de clientes do Negócio no Azul</p>
       </div>
     </section>
 

@@ -137,7 +137,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
                   var body = new URLSearchParams({
                     id: pid,
                     ev: 'InitiateCheckout',
-                    cd: JSON.stringify({ value: 47, currency: 'BRL', content_ids: ['I105499750V'] }),
+                    cd: JSON.stringify({ value: 67, currency: 'BRL', content_ids: ['I105499750V'] }),
                     eid: eventID,
                   });
                   navigator.sendBeacon('https://www.facebook.com/tr/?' + body.toString());
@@ -175,7 +175,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         price: '67.00',
         priceCurrency: 'BRL',
         availability: 'https://schema.org/InStock',
-        url: 'https://pay.hotmart.com/I105499750V?checkoutMode=2',
+        url: 'https://pay.kiwify.com.br/5GmdAs7',
       },
     })} />
 
